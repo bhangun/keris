@@ -1,0 +1,48 @@
+{
+  "name": "keris",
+  "version": "0.1.0",
+  "description": "Core schema of Kujang Generator",
+  "keywords": [
+    "yeoman-generator",
+    "generator-kujang",
+    "kujang",
+    "openapi",
+    "swagger",
+    "oas3"
+  ],
+  "homepage": "https://github.com/bhangun/keris",
+  "author": "bhangun hartani <bhangunh@kays.tech> (https://kays.tech)",
+  "main": "generators/app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhangun/keris.git"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "chalk": "^4.1.2",
+    "ejs": "^3.1.9",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "yeoman-generator": "^5.8.0"
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "release": "git push && git push --tags && npm publish",
+    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
+    "test": "mocha test"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bhangun/keris/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "eslint": "^8.20.0"
+  }
+}
