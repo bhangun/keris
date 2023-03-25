@@ -22,6 +22,7 @@ const path = require('path');
 const _ = require('lodash');
 const ejs = require('ejs');
 const chalk = require('chalk');
+const trans = require('./transformer');
 const utils = require('./utils');
 
 module.exports = class extends Generator {
@@ -244,7 +245,7 @@ module.exports = class extends Generator {
    * @param {*} callback 
    */
   transformApi(appsName, path_api, callback) {
-    utils.transformApi(appsName, path_api, (api, origin) => {
+    trans.transformApi(appsName, path_api, (api, origin) => {
       callback(api, origin)
     })
   }
@@ -298,7 +299,7 @@ module.exports = class extends Generator {
    * @returns 
    */
   transformType(type, isEnum, lang) {
-    return utils.transformType({type: type, isEnum:isEnum}, lang)
+    return trans.transformType({type: type, isEnum:isEnum}, lang)
   }
 
   /**
@@ -307,12 +308,12 @@ module.exports = class extends Generator {
    * @returns 
    */
   propsForServices(paths) {
-    return utils.propsForServices(paths)
+    return trans.propsForServices(paths)
   }
 
 
   otherEntity(paths) {
-    return utils.otherEntity(paths)
+    return trans.otherEntity(paths)
   }
 
  /**

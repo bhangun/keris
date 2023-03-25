@@ -21,6 +21,7 @@ const GenBase = require('../core');
 const utils = require('../core/utils');
 const _ = require('lodash');
 const fs = require('fs')
+const trans = require('../core/transformer')
 
 
 const API2 = 'https://petstore.swagger.io/v2/swagger.json'
@@ -159,7 +160,7 @@ const coba = [
 
 function testArray(_path) {
 
-    utils.transformApi('myname', _path, (api) => {
+    trans.transformApi('myname', _path, (api) => {
         this.props = api
 
         // utils.writingJson(api)

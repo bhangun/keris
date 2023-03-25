@@ -101,7 +101,7 @@ function getPaths(api, props) {
         description: m.description,
   
         /// paths.<path>.<method>.operationId
-        operationId: _.camelCase(m.operationId),
+        operationId: _.camelCase(m.operationId?m.operationId:'Operation'),
   
         /// Request Body -> All included
         /// requestBody.content
