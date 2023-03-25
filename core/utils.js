@@ -20,7 +20,7 @@
 const _ = require('lodash');
 const SwaggerParser = require("@apidevtools/swagger-parser");
 const path = require('./path');
-const rs = require('./responses');
+//const rs = require('./responses');
 const sec = require('./security');
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
   mappingEntities,
   mappingFields,
   transformType,
-  propsForServices,
+  //mappingServices,
   otherEntity,
   uniqProperties,
   findEqualObject,
@@ -57,9 +57,11 @@ module.exports = {
  */
 function payloadAllProps(api, appsName) {
   const _props = []
-  const _entities = mappingEntities(appsName, api)
+  
   const _uniqprop =  uniqProperties(_props)
   const paths = path.getPaths(api, _props)
+  const services = mappingServices(paths, api.properties, 'dart' )
+  const _entities = mappingEntities(appsName, api, services)
   const properties = _uniqprop? _uniqprop :[]
 
 
@@ -71,7 +73,7 @@ function payloadAllProps(api, appsName) {
     endpoint: getEndpoint(api),
     securitySchemes: api.components ? sec.getSecurity(api.components.securitySchemes) : {},
     tags: api.tags,
-    methods: propsForServices(paths, properties, 'dart' ),
+    services: services,
     paths: paths, 
     entities: _entities.length > 0 ? _entities: entityFromProperties(_uniqprop),
     properties: properties
@@ -83,36 +85,19 @@ function payloadAllProps(api, appsName) {
 }
 
 /**
- * Mapping scopes
- * @param {*} input 
- * @returns 
- */
-function getScopes(input) {
-  const scopes = []
-  if (input) Object.entries(input).forEach(s => {
-    scopes.push({
-      scope: s[0],
-      description: s[1]
-    })
-  })
-  return scopes
-}
-
-/**
  * Mapping component to be entities and as repositories
  * @param {*} appsName Application name
  * @param {*} api OpenAPi object
  * @returns entites
  */
-function mappingEntities(appsName, api) {
+function mappingEntities(appsName, api, services) {
 
-  const schema = api.components ? api.components.schemas : {}
+  const schema = api.components ? api.components.schemas : null
   const entities = []
 
-  console.log('mappingEntities')
-
-  console.log('---------')
-  console.log(api.components.schemas)
+  if(!schema){
+    services
+  }
 
   if (schema) Object.entries(schema).forEach(entity => {
     entities.push({
@@ -125,9 +110,11 @@ function mappingEntities(appsName, api) {
       entityFolderName: _.camelCase(entity[0]),
       entityFileName: _.camelCase(entity[0]),
       enableTranslation: false,
-      fields: mappingFields(entity[1], schema)
+      fields: mappingFields(entity[1])
     })
   })
+
+  //console.log(entities)
   return entities
 }
 
@@ -156,9 +143,6 @@ function mappingFields(obj) {
     })
   return fields
 }
-
-
-
 
 /**
  * 
@@ -242,7 +226,6 @@ function mappingFields(obj) {
   return newType
 }
 
-
 /**
  * 
  * @param {*} appsName 
@@ -309,45 +292,69 @@ function transformApi(appsName, path, callback) {
  * @param {*} paths 
  * @returns 
  */
-function propsForServices(paths, properties, lang) {
+function mappingServices(paths, properties, lang) {
 
-  const methods = []
+
+
+
+  const services = []
   for (const i in paths) {
     for (const m in paths[i].methods) {
 
-      //console.log('---propsForServices----')
+      //console.log('---mappingServices----')
       //console.log(paths[i].methods[m].responses)
-
-
-      const responseType = rs.getResponseType(paths[i].methods[m].responses, properties)
+      const tag = paths[i].methods[m].tags[0]
+      const serviceName = 'serv'+i+tag+m
+      const responseType = 'Obj'+i+tag+m
+      //const responseType = rs.getResponseType(paths[i].methods[m].responses, properties)
 
       // PARAMETER
       const param = putParam(paths[i].methods[m], responseType, lang);
 
-      const methodPath = _transMethod(paths[i].methods[m].method, param);
+      const method = _transMethod(paths[i].methods[m].method, param);
    
       const parameters = param.param;
       const query = param.query;
+      const optId = paths[i].methods[m].operationId
+      
 
-      methods.push({
+      services.push({
         path: paths[i].path ? paths[i].path : '',
-        methodName: paths[i].methods[m].operationId ? paths[i].methods[m].operationId : '',
-        methodPath: methodPath.method,
+        serviceName: optId ? optId : serviceName,
+        method: method.method,
         summary: paths[i].methods[m].summary ? paths[i].methods[m].summary : '',
         desc: paths[i].methods[m].description ? paths[i].methods[m].description : '',
         responseType: responseType,
         parameters: parameters,
         query: query,
-        requestPayload: methodPath.payload,
-        requestPayloadStatement: methodPath.payloadStatement,
-        onlyParam: methodPath.onlyParam,
-        jsonParam: methodPath.jsonParam
+        requestPayload: method.payload,
+        requestPayloadStatement: method.payloadStatement,
+        onlyParam: method.onlyParam,
+        jsonParam: method.jsonParam
       })
     }
   }
 
- // console.log(methods)
-  return methods
+  console.log(services)
+
+  return services
+}
+
+
+/**
+ * Mapping scopes
+ * @param {*} input 
+ * @returns 
+ */
+function getScopes(input) {
+  const scopes = []
+  if (input) Object.entries(input).forEach(s => {
+    scopes.push({
+      scope: s[0],
+      description: s[1]
+    })
+  })
+  return scopes
 }
 
 
@@ -644,3 +651,88 @@ function getEndpoint(api) {
 
   return schema
 }
+
+
+
+/**
+ * Rewrite file with passed arguments
+ * @param {object} args argument object (containing path, file, haystack, etc properties)
+ * @param {object} generator reference to the generator
+ */
+/* 
+function rewriteFile(args, generator) {
+  let fullPath;
+  if (args.path) {
+    fullPath = path.join(args.path, args.file);
+  }
+  fullPath = generator.destinationPath(args.file);
+
+  args.haystack = generator.fs.read(fullPath);
+  const body = rewrite(args);
+  generator.fs.write(fullPath, body);
+  return args.haystack !== body;
+} */
+
+
+/**
+ * Rewrite using the passed argument object.
+ *
+ * @param {object} args arguments object (containing splicable, haystack, needle properties) to be used
+ * @param {string[]} args.splicable       - content to be added.
+ * @param {boolean} [args.prettierAware]  - apply prettier aware expressions before looking for applied needles.
+ * @param {string|RegExp} [args.regexp]    - use another content for looking for applied needles.
+ * @returns {*} re-written file
+ */
+/* 
+function rewrite(args) {
+  // check if splicable is already in the body text
+  let re;
+  if (args.regexp) {
+    re = args.regexp;
+    if (!re.test) {
+      re = escapeRegExp(re);
+    }
+  } else {
+    re = args.splicable.map(line => `\\s*${escapeRegExp(normalizeLineEndings(line))}`).join('\n');
+  }
+  if (!re.test) {
+    if (args.prettierAware) {
+      re = convertToPrettierExpressions(re);
+    }
+    re = new RegExp(re);
+  }
+
+  if (re.test(normalizeLineEndings(args.haystack))) {
+    return args.haystack;
+  }
+
+  const lines = args.haystack.split('\n');
+
+  let otherwiseLineIndex = -1;
+  lines.forEach((line, i) => {
+    if (line.includes(args.needle)) {
+      otherwiseLineIndex = i;
+    }
+  });
+
+  if (otherwiseLineIndex === -1) {
+    console.warn(`Needle ${args.needle} not found at file ${args.file}`);
+    return args.haystack;
+  }
+
+  let spaces = 0;
+  while (lines[otherwiseLineIndex].charAt(spaces) === ' ') {
+    spaces += 1;
+  }
+
+  let spaceStr = '';
+
+  // eslint-disable-next-line no-cond-assign
+  while ((spaces -= 1) >= 0) {
+    spaceStr += ' ';
+  }
+
+  lines.splice(otherwiseLineIndex, 0, args.splicable.map(line => spaceStr + line).join('\n'));
+
+  return lines.join('\n');
+} */

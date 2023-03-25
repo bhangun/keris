@@ -25,7 +25,6 @@ module.exports = {
     getPaths
 };
 
-
 /**
  * Mapping path to be use as services
  * @param {*} api Api root
@@ -46,8 +45,6 @@ function getPaths(api, props) {
     return paths
 }
 
-
-
 /**
  * Get Path method
  * @param {*} path path
@@ -55,7 +52,7 @@ function getPaths(api, props) {
  function getPathMethod(path, props) {
     const methods = []
   
-   // console.log(path)
+    let index = 0
 
     if (path) Object.entries(path).forEach(method => {
       const m = method[1];
@@ -63,10 +60,11 @@ function getPaths(api, props) {
       let typeRequest = ''
       let required = []
       let _properties = []
+      
   
       if (m.requestBody){
         Object.entries(m.requestBody.content).forEach(c => {
-  
+          
           /**  requestBody.content.<contentType> */
           reqContentType.push(c[0])
   
@@ -93,6 +91,8 @@ function getPaths(api, props) {
   
         /// paths.<path>.<method>.tags
         tags: m.tags,
+
+        tag: m.tags != null && m.tags.length > 0 ? m.tags : '',
   
         /// paths.<path>.<method>.summary
         summary: m.summary,
@@ -108,15 +108,13 @@ function getPaths(api, props) {
         requestBody: _getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
   
         // Response
-        responses: rs.responses(m, props)
+        responses: rs.responses(m, props, index)
       })
+      index++
     })
 
-    
-    return methods
-  }
-
-
+  return methods
+}
 
 /**
  * Contain all RequestBody element
@@ -128,17 +126,17 @@ function getPaths(api, props) {
  * @returns 
  */
 function _getRequestBody(requestBody, typeRequest, reqContentType, required, properties, props) {
-    const getprop = prop.getProperties(properties, required)
-  
-    props.push(getprop)
-  
-    return {
-      required: required,
-      component: _.capitalize(typeRequest),
-      description: requestBody ? requestBody.description : '',
-      contentType: reqContentType,
-      properties: getprop
-    }
+  const getprop = prop.getProperties(properties, required)
+
+  props.push(getprop)
+
+  return {
+    required: required,
+    component: _.capitalize(typeRequest),
+    description: requestBody ? requestBody.description : '',
+    contentType: reqContentType,
+    properties: getprop
+  }
 }
   
 /**
@@ -146,7 +144,7 @@ function _getRequestBody(requestBody, typeRequest, reqContentType, required, pro
  * @param {*} path 
  * @returns 
  */
- function splitParam(path) {
+function splitParam(path) {
     return path.replaceAll('{', '${')
-  }
+}
   

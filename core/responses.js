@@ -31,12 +31,12 @@ module.exports = {
  * @param {*} list 
  * @returns 
  */
-function responses(list, props) {
+function responses(list, props, index) {
     const responses = []
-
+    let indexRes = 0
     if (list)
         Object.entries(list.responses).forEach(r => {
-
+          indexRes++
         let headersType = []
         const responseCode = r[0]
         const content = r[1].content ? _getResponseContentType(r[1].content, props) : []
@@ -57,18 +57,53 @@ function responses(list, props) {
             description: r[1].description ? r[1].description : '',
 
             /// responses.<responseCode>.content
-            content: content,
-
+            contenType: content.contenType,
+            component: content.component,
+            required: content.required,
+            name : 'Res'+index+'i'+indexRes+'C'+responseCode,
+            properties: content.properties,
+            object: content.object,
+            
             /// responses.<responseCode>.content
             //required: required,
-
             headers: headersType
         })
-        })
 
-    // console.log(responses)
+       
+
+        })
+        
+
+      //console.log(list.responses)
+    // console.log(responses[0])
     return responses;
 }
+
+
+function getResponseType(responses, properties) {
+
+  //console.log(responses)
+
+
+    let responseType = 'void'
+    // RESPONSE
+    const _responses = responses;
+    const code200 = _responses.find(e => e.code == '200' ||  e.code == '201')
+    const responseContent = code200 ? code200 : {}
+  
+    if (responseContent) {
+      if (responseContent.component)
+        responseType = responseContent.component
+      else if(responseContent.properties){
+        responseType = findEqualObject(responseContent.properties, properties).name
+        //responseType = _.capitalize(responseContent.content.items.type + '' + i)
+        responseType = findEqualObject(responseContent.properties, properties).name
+      } 
+    } else responseType = 'UnknownObject'
+  
+    return responseType
+  }
+
 
 
 /**
@@ -105,8 +140,8 @@ function _getResponseContentType(contentType, props) {
 
           /// responses.<responseCode>.content.schema.items
           _items.type = c[1].schema.items ? c[1].schema.items.type : ''
-
-          _items.properties = c[1].schema.items ? prop.getProperties(c[1].schema.items.properties, []) : []
+          
+          //_items.properties = c[1].schema.items ? prop.getProperties(c[1].schema.items.properties, []) : []
         }
     })
 
@@ -117,36 +152,11 @@ function _getResponseContentType(contentType, props) {
         component: _.capitalize(type),
         required: req,
         properties: prop.getProperties(_props, []),
-        responseObject: _items
+        object: _items
     }
 }
 
 
-
-function getResponseType(responses, properties) {
-
-  //console.log(responses)
-
-
-    let responseType = 'void'
-    // RESPONSE
-    const _responses = responses;
-    const code200 = _responses.find(e => e.code == '200' ||  e.code == '201')
-    const responseContent = code200 ? code200 : {}
-  
-    if (responseContent.content) {
-      if (responseContent.content.component)
-        responseType = responseContent.content.component
-      else if(responseContent.content.properties)
-        responseType = findEqualObject(responseContent.content.properties, properties).name
-      else if (responseContent.content.items){
-        //responseType = _.capitalize(responseContent.content.items.type + '' + i)
-        responseType = findEqualObject(responseContent.content.items.properties, properties).name
-      } 
-    } else responseType = 'UnknownObject'
-  
-    return responseType
-  }
 
 /**
  * findEqualObject from array

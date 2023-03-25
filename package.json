@@ -11,7 +11,7 @@
     "oas3"
   ],
   "homepage": "https://github.com/bhangun/keris",
-  "author": "bhangun hartani <bhangunh@kays.tech> (https://kays.tech)",
+  "author": "bhangun hartani <n90d1n9@gmail.com> (https://kays.tech)",
   "main": "generators/app/index.js",
   "repository": {
     "type": "git",

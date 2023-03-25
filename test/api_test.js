@@ -164,6 +164,7 @@ function testArray(_path) {
 
         // utils.writingJson(api)
         const com = _.compact(api.paths)
+        
        // console.log(com)
         //const arr = api
         //const arr2 = utils.uniqProperties(api.properties)
