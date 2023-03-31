@@ -26,7 +26,7 @@ const trans = require('../core/transformer')
 
 const API2 = 'https://petstore.swagger.io/v2/swagger.json'
 const API3 = 'https://petstore3.swagger.io/api/v3/openapi.json'
-const API4 = 'test/pet-oas3.yaml'
+const API4 = '../api_sample/pet-oas3.json'
 const API5 = '../api_sample/api02.yaml'
 
 const API01J = '../api_sample/api/api01.json'
@@ -165,6 +165,8 @@ function testArray(_path) {
 
         // utils.writingJson(api)
         const com = _.compact(api.paths)
+
+        //console.log(api.paths)
         
        // console.log(com)
         //const arr = api
@@ -213,9 +215,34 @@ function testArray(_path) {
 
 
 
-
+//testArray(API4)
 testArray(API6)
+console.log('asd-._@$%^&*()+=|}{[];:<>,?/342asd'.replace(/[^a-z0-9]/gi,''))
+console.log('asd-._@$%^&*()+=|}{[];:<>,?/asd'.replace(/[$._?\s]/g,'p'))
 //writingJson(API6)
 //cobaArray()
 //writingEntity()
 //writingEntity2()
+
+
+ /* Object.entries(api.paths).forEach(path => {
+      Object.entries(path[1]).forEach(met => {
+       // console.log(met)
+        Object.entries(met[1].responses).forEach(res => {
+        // console.log(res)
+          Object.entries(res[1]).forEach(code => {
+            
+            console.log(code)
+            Object.entries(code[1]).forEach(cont => {
+              if(cont[1].type){
+                //console.log(cont[1])
+                Object.entries(cont[1]).forEach(c => {
+                  //path.responses.forEach(res => {
+                  console.log( c[1])
+                })
+              }
+            }) 
+          }) 
+       })
+      })
+    }) */

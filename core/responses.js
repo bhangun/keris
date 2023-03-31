@@ -31,58 +31,59 @@ module.exports = {
  * @param {*} list 
  * @returns 
  */
-function responses(list, props, index) {
+function responses(list, props, index, entities) {
     const responses = []
-    let indexRes = 0
+    //let indexRes = 0
     if (list)
         Object.entries(list.responses).forEach(r => {
-          indexRes++
-        let headersType = []
-        const responseCode = r[0]
-        const content = r[1].content ? _getResponseContentType(r[1].content, props) : []
+          //  indexRes++
+          let headersType = []
+          const responseCode = r[0]
+          const content = r[1].content ? _getResponseContentType(r[1].content, props) : []
 
 
-        if (r[1].headers){
-          Object.entries(r[1].headers).forEach(c => {
-            headersType.push(c[0])
-          })
-        }
+          if (r[1].headers){
+            Object.entries(r[1].headers).forEach(c => {
+              headersType.push(c[0])
+            })
+          }
 
-       
-        responses.push({
-            /// responses.<responseCode>
-            code: responseCode,
+          const name = 'Res'+Math.random().toString(36).slice(-4)+responseCode
 
-            /// responses.<responseCode>.description
-            description: r[1].description ? r[1].description : '',
+          if(content.properties && content.properties.length > 0) 
+            entities.push({
+              name: name,
+              properties: content.properties
+            })
 
-            /// responses.<responseCode>.content
-            contenType: content.contenType,
-            component: content.component,
-            required: content.required,
-            name : 'Res'+index+'i'+indexRes+'C'+responseCode,
-            properties: content.properties,
-            object: content.object,
-            
-            /// responses.<responseCode>.content
-            //required: required,
-            headers: headersType
-        })
-
-       
-
-        })
         
+          responses.push({
+              /// responses.<responseCode>
+              code: responseCode,
 
-      //console.log(list.responses)
-    // console.log(responses[0])
+              /// responses.<responseCode>.description
+              description: r[1].description ? r[1].description : '',
+
+              /// responses.<responseCode>.content
+              contenType: content.contenType,
+              component: content.component,
+              required: content.required,
+              name : name,
+              properties: content.properties,
+              object: content.object,
+              
+              /// responses.<responseCode>.content
+              //required: required,
+              headers: headersType
+          })
+        })
     return responses;
 }
 
 
 function getResponseType(responses, properties) {
 
-  //console.log(responses)
+   // console.log(responses)
 
 
     let responseType = 'void'
@@ -90,21 +91,30 @@ function getResponseType(responses, properties) {
     const _responses = responses;
     const code200 = _responses.find(e => e.code == '200' ||  e.code == '201')
     const responseContent = code200 ? code200 : {}
+    let hasResponse = false
   
     if (responseContent) {
-      if (responseContent.component)
+      if (responseContent.component){
         responseType = responseContent.component
-      else if(responseContent.properties){
-        responseType = findEqualObject(responseContent.properties, properties).name
+        hasResponse = responseType != 'void'? true : false
+      }
+      else if(responseContent.properties && responseContent.properties.length >0 ){
+       // console.log(responseContent.properties )
+        //responseType = findEqualObject(responseContent.properties, properties).name
         //responseType = _.capitalize(responseContent.content.items.type + '' + i)
         responseType = findEqualObject(responseContent.properties, properties).name
+        responseType = responseContent.name
+        hasResponse = true
       } 
     } else responseType = 'UnknownObject'
-  
-    return responseType
-  }
 
+    
 
+    return {
+      hasResponse: hasResponse,
+      responseType: responseType
+    }
+}
 
 /**
  * Get ResponseContentType
@@ -155,8 +165,6 @@ function _getResponseContentType(contentType, props) {
         object: _items
     }
 }
-
-
 
 /**
  * findEqualObject from array

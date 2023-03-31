@@ -29,17 +29,17 @@ module.exports = {
  * Mapping path to be use as services
  * @param {*} api Api root
  */
-function getPaths(api, props) {
+function getPaths(api, props, entities) {
     const paths = []
     if (api) Object.entries(api.paths).forEach(path => {
         let param = ''
         param = path[0] ? splitParam(path[0]) : ''
         const hasParam = path[0].split('{').length > 1
         paths.push({
-        pathOrigin: path[0],
-        path: param,
-        hasParam: hasParam,
-        methods: getPathMethod(path[1], props)
+          pathOrigin: path[0],
+          path: param,
+          hasParam: hasParam,
+          methods: getPathMethod(path[1], props, entities)
         })
     })
     return paths
@@ -49,7 +49,7 @@ function getPaths(api, props) {
  * Get Path method
  * @param {*} path path
  */
- function getPathMethod(path, props) {
+ function getPathMethod(path, props, entities) {
     const methods = []
   
     let index = 0
@@ -92,23 +92,23 @@ function getPaths(api, props) {
         /// paths.<path>.<method>.tags
         tags: m.tags,
 
-        tag: m.tags != null && m.tags.length > 0 ? m.tags : '',
+        tag: m.tags != null && m.tags.length > 0 ? m.tags[0] : '',
   
         /// paths.<path>.<method>.summary
         summary: m.summary,
   
         /// paths.<path>.<method>.description
-        description: m.description,
+        // description: m.description,
   
         /// paths.<path>.<method>.operationId
-        operationId: _.camelCase(m.operationId?m.operationId:'Operation'),
+        operationId: _.camelCase(m.operationId),
   
         /// Request Body -> All included
         /// requestBody.content
         requestBody: _getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
   
         // Response
-        responses: rs.responses(m, props, index)
+        responses: rs.responses(m, props, index, entities)
       })
       index++
     })

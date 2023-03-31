@@ -23,6 +23,7 @@ const path = require('./path');
 const sec = require('./security');
 const parser = require('./parser');
 const utils = require('./utils');
+const rs = require('./responses');
 
 module.exports = {
     payloadAllProps,
@@ -30,8 +31,7 @@ module.exports = {
     mappingEntities,
     mappingFields,
     transformType,
-    otherEntity,
-    getScopes
+    otherEntity
 };
 
 
@@ -54,13 +54,13 @@ module.exports = {
  */
 function payloadAllProps(api, appsName) {
     const _props = []
-
+    const entitiesAdded = []
     const _uniqprop =  utils.uniqProperties(_props)
-    const paths = path.getPaths(api, _props)
-    const services = mappingServices(paths, api.properties, 'dart' )
-    const _entities = mappingEntities(appsName, api, services, paths)
     const properties = _uniqprop? _uniqprop :[]
-
+    const paths = path.getPaths(api, _props, entitiesAdded)
+    const services = mappingServices(paths, api, 'dart', properties )
+    const _entities = mappingEntities(appsName, api, entitiesAdded)
+    
 
     const schema =  {
         appsName: appsName,
@@ -68,15 +68,13 @@ function payloadAllProps(api, appsName) {
         packageFolder: appsName,
         info: api.info,
         endpoint: getEndpoint(api),
-        securitySchemes: api.components ? sec.getSecurity(api.components.securitySchemes) : {},
-        tags: api.tags,
+        security: api.components ? sec.getSecurity(api.components.securitySchemes) : {},
+        //tags: api.tags,
         services: services,
-        paths: paths, 
+        //paths: paths, 
         entities: _entities.length > 0 ? _entities: entityFromProperties(_uniqprop),
         properties: properties
     }
-
-    //console.log(schema.methods)
 
     return schema
 }
@@ -87,35 +85,46 @@ function payloadAllProps(api, appsName) {
  * @param {*} api OpenAPi object
  * @returns entites
  */
-function mappingEntities(appsName, api, services, paths) {
+function mappingEntities(appsName, api, entitiesAdded) {
 
-const schema = api.components ? api.components.schemas : null
-const entities = []
+    const schema = api.components ? api.components.schemas : null
+   const entities = []
 
-console.log(services[0])
-console.log(paths[0])
-
-if(!schema){
-    services
-}
-
-if (schema) Object.entries(schema).forEach(entity => {
-    entities.push({
-    appsName: appsName,
-    pkType: 'String',
-    relationships: [],
-    entityName: entity[0],
-    entityClass: _.capitalize(entity[0]),
-    entityInstance: _.camelCase(entity[0]),
-    entityFolderName: _.camelCase(entity[0]),
-    entityFileName: _.camelCase(entity[0]),
-    enableTranslation: false,
-    fields: mappingFields(entity[1])
+  
+   entitiesAdded.forEach(entity => {
+      entities.push({
+        appsName: appsName,
+        pkType: 'String',
+        relationships: [],
+        entityName: entity.name,
+        entityClass: _.capitalize(entity.name),
+        entityInstance: _.camelCase(entity.name),
+        entityFolderName: _.camelCase(entity.name),
+        entityFileName: _.camelCase(entity.name),
+        enableTranslation: false,
+        fields: mappingFields(entity, true)
+        })
     })
-})
 
-//console.log(entities)
-return entities
+    if (schema) Object.entries(schema).forEach(entity => {
+        entities.push({
+          appsName: appsName,
+          pkType: 'String',
+          relationships: [],
+          entityName: entity[0],
+          entityClass: _.capitalize(entity[0]),
+          entityInstance: _.camelCase(entity[0]),
+          entityFolderName: _.camelCase(entity[0]),
+          entityFileName: _.camelCase(entity[0]),
+          enableTranslation: false,
+          fields: mappingFields(entity[1])
+        })
+    })
+
+    //console.log(entities[53])
+    //console.log(entities.length)
+
+    return entities
 }
 
 /**
@@ -124,11 +133,13 @@ return entities
  * @param {*} entities 
  * @returns 
  */
-function mappingFields(obj) {
+function mappingFields(obj, isAdded) {
     const fields = []
-    if (obj.properties)
-        Object.entries(obj.properties).forEach(field => {
-        fields.push({
+
+    if (obj.properties){
+        if(!isAdded){
+          Object.entries(obj.properties).forEach(field => {
+          fields.push({
             fieldType: parser.parse(field[1], field[1].enum),
             fieldName: _.camelCase(field[0]),
             fieldIsEnum: field[1].enum ? true : false,
@@ -139,9 +150,27 @@ function mappingFields(obj) {
             fieldsContainOwnerOneToOne: false,
             fieldsContainNoOwnerOneToOne: false,
             fieldsContainManyToOne: false
+          })
         })
-    })
-    return fields
+        } else {
+          obj.properties.forEach(field => {
+            fields.push({
+              fieldType: field.type,
+              fieldName: _.camelCase(field.name),
+              fieldIsEnum: field.enum ? true : false,
+              fieldValues: _.join(field.enum, ','),
+              fieldDescription: field.description,
+              fieldsContainOneToMany: false,
+              fieldsContainOwnerManyToMany: false,
+              fieldsContainOwnerOneToOne: false,
+              fieldsContainNoOwnerOneToOne: false,
+              fieldsContainManyToOne: false
+            })
+          })
+        }
+  }
+  
+  return fields
 }
 
 
@@ -154,18 +183,7 @@ function mappingFields(obj) {
 function transformApi(appsName, path, callback) {
 
     SwaggerParser.bundle(path, 
-        /* {
-        continueOnError: true,            // Don't throw on the first error
-        parse: {
-            json: true,                    // Enable the JSON parser
-            yaml: {
-            allowEmpty: false             // Don't allow empty YAML files
-            },
-            text: {
-            canParse: [".txt", ".html"],  // Parse .txt and .html files as plain text (strings)
-            encoding: 'utf16'             // Use UTF-16 encoding
-            }
-        },
+        /* 
         resolve: {
             file: false,                    // Don't resolve local file references
             http: {
@@ -211,51 +229,66 @@ function transformApi(appsName, path, callback) {
  * @param {*} paths 
  * @returns 
  */
-function mappingServices(paths, properties, lang) {
-
-
-
+function mappingServices(paths, api, lang, properties) {
 
     const services = []
     for (const i in paths) {
-        for (const m in paths[i].methods) {
-
-        //console.log('---mappingServices----')
-        //console.log(paths[i].methods[m].responses)
+      for (const m in paths[i].methods) {
         const tag = paths[i].methods[m].tags[0]
-        const serviceName = 'serv'+i+tag+m
-        const responseType = 'Obj'+i+tag+m
-        //const responseType = rs.getResponseType(paths[i].methods[m].responses, properties)
+        const serviceName = ('serv'+i+tag+m).replace(/[^a-z0-9]/gi,'');
+      
+        let externalDoc = ''
+        let description = ''
+        const response= rs.getResponseType(paths[i].methods[m].responses, properties)
 
+        let responseType = response.responseType
         // PARAMETER
         const param = putParam(paths[i].methods[m], responseType, lang);
+
+//console.log(param)
 
         const method = _transMethod(paths[i].methods[m].method, param);
         
         const parameters = param.param;
         const query = param.query;
-        const optId = paths[i].methods[m].operationId
-        
+        const optId = paths[i].methods[m].operationId 
+
+        for (const t in api.tags){
+          if (api.tags[t].name == tag){
+            externalDoc = api.tags[t].externalDoc
+            description = api.tags[t].description
+          }
+        }
 
         services.push({
+            index: i, 
             path: paths[i].path ? paths[i].path : '',
             serviceName: optId ? optId : serviceName,
             method: method.method,
             summary: paths[i].methods[m].summary ? paths[i].methods[m].summary : '',
-            desc: paths[i].methods[m].description ? paths[i].methods[m].description : '',
+            desc: paths[i].methods[m].description ? paths[i].methods[m].description : description,
             responseType: responseType,
-            parameters: parameters,
+            hasResponse: response.hasResponse,
+            parametersString: parameters,
             query: query,
             requestPayload: method.payload,
             requestPayloadStatement: method.payloadStatement,
             onlyParam: method.onlyParam,
-            jsonParam: method.jsonParam
+            jsonParam: method.jsonParam,
+
+            name: paths[i].methods[m].name,     
+            parameters: paths[i].methods[m].parameters,
+            tag: tag,
+            externalDoc : externalDoc,
+            operationId: optId ? optId : serviceName,
+            requestBody: paths[i].methods[m].requestBody,
+            responses: paths[i].methods[m].responses
         })
-        }
+      }
     }
 
-    //console.log(services)
-
+   //console.log(services)
+    //console.log(services.length)
     return services
 }
 
@@ -339,26 +372,10 @@ function putParam(input, resType, lang) {
     };
   }
 
-
-/**
- * Mapping scopes
- * @param {*} input 
- * @returns 
- */
-function getScopes(input) {
-    const scopes = []
-    if (input) Object.entries(input).forEach(s => {
-      scopes.push({
-        scope: s[0],
-        description: s[1]
-      })
-    })
-    return scopes
-  }
   
   
   
-  function isString(type,param){
+function isString(type,param){
     if(type ==='String' || type ==='string')
       return '"${'+param+'}"'
     else

@@ -21,7 +21,7 @@ const _ = require('lodash');
 
 module.exports = {
   uniqProperties,
-  findEqualObject
+  findEqualObject,
 };
 
 
@@ -55,7 +55,6 @@ function uniqProperties(properties) {
     return false
   })
 }
-  
 
 
 

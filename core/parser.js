@@ -30,77 +30,82 @@ module.exports = {
  * @param {*} lang 
  * @returns 
  */
-function parse(type, lang) {
+function parse(typeOrigin, lang) {
+  
     lang
+
+
     let newType = {}
     let _comp = ''
-    if(type.items && type.items.$ref)
+    if(typeOrigin.items && typeOrigin.items.$ref)
       _comp = _.capitalize(type.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
   
-    newType.origin = type.type ? type.type : _comp
-    newType.example = type.example ? type.example : ''
-    newType.description = type.description ? type.description : ''
-    newType.type = 'String'
+    newType.origin = typeOrigin.type? typeOrigin.type: _comp
+    newType.example = typeOrigin.example ? typeOrigin.example : ''
+    newType.description = typeOrigin.description ? typeOrigin.description : ''
+    newType= 'String'
     newType.typeDesc = ''
   
   
-    switch (type.type) {
+    switch (typeOrigin.type) {
       case 'integer':
-        if (type.format == 'int64')
-          newType.type = 'double'
-        else if (type.format == 'int32')
-          newType.type = 'int'
+        if (typeOrigin.format == 'int64')
+          newType= 'double'
+        else if (typeOrigin.format == 'int32')
+          newType= 'int'
         break;
       case 'number':
-        if (type.format == 'float' || type.format == 'double')
-          newType.type = 'double'
+        if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
+          newType= 'double'
        // else if (type.format == 'double')
-        //  newType.type = 'double'
+        //  newType= 'double'
         break;
       case 'string':
-        switch (type.format) {
+        switch (typeOrigin.format) {
           case 'byte':
-            newType.type = 'ByteData'
+            newType= 'ByteData'
             break;
           case 'binary':
-            newType.type = 'BinaryCodec'
+            newType= 'BinaryCodec'
             break;
           case 'date':
-            newType.type = 'DateTime'
+            newType= 'DateTime'
             break;
           case 'date-time':
-            newType.type = 'DateTime'
+            newType= 'DateTime'
             break;
           case 'password':
           default:
-            newType.type = 'String'
+            newType= 'String'
             break;
         }
         break;
-      case (type.type == 'Instant'):
-        newType.type = 'int'
+      case (typeOrigin == 'Instant'):
+        newType= 'int'
         newType.typeDesc = '.toIso8601String()' + 'Z'
         break
       case 'array':
         if(_comp)
-          newType.type = 'List<'+_comp+'>'
+          newType= 'List<'+_comp+'>'
         else 
-          newType.type = 'List'
+          newType= 'List'
         break;
       case 'uuid':
-        newType.type = 'String'
+        newType= 'String'
         break;
       case 'object':
         if(_comp)
-          newType.type = _comp
-        else if(newType.type == type.xml)
-          newType.type =  _.capitalize(type.xml.name)
+          newType= _comp
+        else if(newType== typeOrigin.xml)
+          newType=  _.capitalize(typeOrigin.xml.name)
         else 
-          newType.type = 'Object'
+          newType= 'Object'
         break;
     }
   
-    if (type.isEnum) newType.type = 'String'
-  
+    if (typeOrigin.isEnum) newType= 'String'
+
+if(newType!='String')
+   console.log(newType)
     return newType
   }
