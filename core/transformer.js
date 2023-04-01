@@ -120,10 +120,6 @@ function mappingEntities(appsName, api, entitiesAdded) {
           fields: mappingFields(entity[1])
         })
     })
-
-    //console.log(entities[53])
-    //console.log(entities.length)
-
     return entities
 }
 
@@ -133,11 +129,12 @@ function mappingEntities(appsName, api, entitiesAdded) {
  * @param {*} entities 
  * @returns 
  */
-function mappingFields(obj, isAdded) {
+function mappingFields(obj, isFieldFromResponse) {
     const fields = []
 
     if (obj.properties){
-        if(!isAdded){
+
+        if(!isFieldFromResponse){
           Object.entries(obj.properties).forEach(field => {
           fields.push({
             fieldType: parser.parse(field[1], field[1].enum),
@@ -154,8 +151,9 @@ function mappingFields(obj, isAdded) {
         })
         } else {
           obj.properties.forEach(field => {
+     
             fields.push({
-              fieldType: field.type,
+              fieldType: parser.parse(field),
               fieldName: _.camelCase(field.name),
               fieldIsEnum: field.enum ? true : false,
               fieldValues: _.join(field.enum, ','),
@@ -245,8 +243,6 @@ function mappingServices(paths, api, lang, properties) {
         // PARAMETER
         const param = putParam(paths[i].methods[m], responseType, lang);
 
-//console.log(param)
-
         const method = _transMethod(paths[i].methods[m].method, param);
         
         const parameters = param.param;
@@ -286,9 +282,6 @@ function mappingServices(paths, api, lang, properties) {
         })
       }
     }
-
-   //console.log(services)
-    //console.log(services.length)
     return services
 }
 
@@ -329,7 +322,7 @@ function putParam(input, resType, lang) {
   
       for (const p in param) {
   
-        const _type = isProp ? parser.parse(param[p], lang).type : parser.parse(param[p].schema, lang).type 
+        const _type = isProp ? parser.parse(param[p], lang).type : parser.parse(param[p].schema, lang).type
   
         _param += comma + req + _type + '? ' + param[p].name;
   
@@ -337,7 +330,7 @@ function putParam(input, resType, lang) {
   
         dartParam += comma + param[p].name + ': ' + param[p].name;
   
-        jsonParam += comma + '"'+param[p].name + '": '+ isString(_type,param[p].name);
+        jsonParam += comma + '"'+param[p].name + '": '+ isString(_type, param[p].name);
   
         if (q > 0)
           and = '%26'
@@ -478,7 +471,7 @@ function isString(type,param){
     for (const p in param) {
       fields.push(
         {
-          "fieldType": isProp ? param[p].type : param[p].schema.type, //parser.parse(isProp ? param[p].type : param[p].schema.type, false),
+          "fieldType": parser.parse(isProp ? param[p] : param[p].schema.type, false), //isProp ? param[p].type : param[p].schema.type, //
           "fieldName": param[p].name,
           "fieldIsEnum": false,
           "fieldValues": "",
@@ -518,7 +511,7 @@ function isString(type,param){
       
       el.forEach( f =>{
           fields.push({
-            "fieldType": parser.parse({type:f.type,isEnum: f.isEnum}, 'dart'),
+            "fieldType": parser.parse({type:f,isEnum: f.isEnum}, 'dart'),
             "fieldName": f.name,
             "fieldIsEnum": f.isEnum,
             "fieldValues": f.isEnum? f.enum:'',

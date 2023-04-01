@@ -33,79 +33,76 @@ module.exports = {
 function parse(typeOrigin, lang) {
   
     lang
-
-
     let newType = {}
     let _comp = ''
+
     if(typeOrigin.items && typeOrigin.items.$ref)
-      _comp = _.capitalize(type.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+        _comp = _.capitalize(type.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
   
     newType.origin = typeOrigin.type? typeOrigin.type: _comp
     newType.example = typeOrigin.example ? typeOrigin.example : ''
     newType.description = typeOrigin.description ? typeOrigin.description : ''
-    newType= 'String'
+    newType.type = 'String'
     newType.typeDesc = ''
   
   
     switch (typeOrigin.type) {
       case 'integer':
         if (typeOrigin.format == 'int64')
-          newType= 'double'
+          newType.type = 'double'
         else if (typeOrigin.format == 'int32')
-          newType= 'int'
+          newType.type = 'int'
         break;
       case 'number':
         if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
-          newType= 'double'
+          newType.type = 'double'
        // else if (type.format == 'double')
-        //  newType= 'double'
+        //  newType.type = 'double'
         break;
       case 'string':
         switch (typeOrigin.format) {
           case 'byte':
-            newType= 'ByteData'
+            newType.type = 'ByteData'
             break;
           case 'binary':
-            newType= 'BinaryCodec'
+            newType.type = 'BinaryCodec'
             break;
           case 'date':
-            newType= 'DateTime'
+            newType.type = 'DateTime'
             break;
           case 'date-time':
-            newType= 'DateTime'
+            newType.type = 'DateTime'
             break;
           case 'password':
           default:
-            newType= 'String'
+            newType.type = 'String'
             break;
         }
         break;
       case (typeOrigin == 'Instant'):
-        newType= 'int'
+        newType.type = 'int'
         newType.typeDesc = '.toIso8601String()' + 'Z'
         break
       case 'array':
         if(_comp)
-          newType= 'List<'+_comp+'>'
+          newType.type = 'List<'+_comp+'>'
         else 
-          newType= 'List'
+          newType.type = 'List'
         break;
       case 'uuid':
-        newType= 'String'
+        newType.type = 'String'
         break;
       case 'object':
         if(_comp)
-          newType= _comp
-        else if(newType== typeOrigin.xml)
-          newType=  _.capitalize(typeOrigin.xml.name)
+          newType.type = _comp
+        else if(newType.type == typeOrigin.xml)
+          newType.type =  _.capitalize(typeOrigin.xml.name)
         else 
-          newType= 'Object'
+          newType.type = 'Object'
         break;
     }
   
-    if (typeOrigin.isEnum) newType= 'String'
+    if (typeOrigin.isEnum) newType.type = 'String'
 
-if(newType!='String')
-   console.log(newType)
     return newType
   }
