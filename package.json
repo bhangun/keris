@@ -1,6 +1,6 @@
 {
   "name": "keris",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core schema of Kujang Generator",
   "keywords": [
     "yeoman-generator",
