@@ -1,0 +1,1193 @@
+asd342asd
+asd-pp@p%^&*()+=|}{[];:<>,p/asd
+[ 'username', { type: 'string' } ]
+[ 'password', { type: 'string' } ]
+[ 'token', { type: 'string', description: 'Authentication Token' } ]
+------S-------
+R1A0B5iky201
+-------E------
+[ 'username', { type: 'string', description: 'Username' } ]
+[
+  'permissions',
+  {
+    type: 'object',
+    properties: { cephfs: [Object] },
+    required: [ 'cephfs' ],
+    description: 'List of permissions acquired'
+  }
+]
+[ 'sso', { type: 'boolean', description: 'Uses single sign on?' } ]
+[
+  'pwdUpdateRequired',
+  { type: 'boolean', description: 'Is password update required?' }
+]
+------S-------
+R3A0Bsft4200
+-------E------
+[ 'name', { type: 'string' } ]
+[ 'pool_name', { type: 'string' } ]
+[ 'size', { type: 'integer' } ]
+[ 'namespace', { type: 'string', default: null } ]
+[ 'schedule_interval', { type: 'string', default: '' } ]
+[ 'obj_size', { type: 'integer', default: null } ]
+[ 'features', { type: 'string', default: null } ]
+[ 'stripe_unit', { type: 'string', default: null } ]
+[ 'stripe_count', { type: 'integer', default: null } ]
+[ 'data_pool', { type: 'string', default: null } ]
+[ 'configuration', { type: 'string', default: null } ]
+[ 'mirror_mode', { type: 'string', default: null } ]
+------S-------
+R6A0B1kbt200
+-------E------
+[ 'pool_name', { type: 'string', default: null } ]
+[ 'new_image_name', { type: 'string' } ]
+[ 'name', { type: 'string', default: null } ]
+[ 'size', { type: 'integer', default: null } ]
+[ 'features', { type: 'string', default: null } ]
+[ 'configuration', { type: 'string', default: null } ]
+[ 'enable_mirror', { type: 'string', default: null } ]
+[ 'primary', { type: 'string', default: null } ]
+[ 'resync', { type: 'boolean', default: false } ]
+[ 'mirror_mode', { type: 'string', default: null } ]
+[ 'schedule_interval', { type: 'string', default: '' } ]
+[ 'remove_scheduling', { type: 'boolean', default: false } ]
+[ 'dest_pool_name', { type: 'string' } ]
+[ 'dest_namespace', { type: 'string' } ]
+[ 'dest_image_name', { type: 'string' } ]
+[ 'snapshot_name', { type: 'string', default: null } ]
+[ 'obj_size', { type: 'integer', default: null } ]
+[ 'features', { type: 'string', default: null } ]
+[ 'stripe_unit', { type: 'string', default: null } ]
+[ 'stripe_count', { type: 'integer', default: null } ]
+[ 'data_pool', { type: 'string', default: null } ]
+[ 'configuration', { type: 'string', default: null } ]
+[ 'delay', { type: 'integer', default: 0 } ]
+[ 'snapshot_name', { type: 'string' } ]
+[ 'new_snap_name', { type: 'string', default: null } ]
+[ 'is_protected', { type: 'boolean', default: null } ]
+[ 'child_pool_name', { type: 'string' } ]
+[ 'child_image_name', { type: 'string' } ]
+[ 'child_namespace', { type: 'string', default: null } ]
+[ 'obj_size', { type: 'integer', default: null } ]
+[ 'features', { type: 'string', default: null } ]
+[ 'stripe_unit', { type: 'string', default: null } ]
+[ 'stripe_count', { type: 'integer', default: null } ]
+[ 'data_pool', { type: 'string', default: null } ]
+[ 'configuration', { type: 'string', default: null } ]
+------S-------
+R18A0Buj9t200
+-------E------
+[ 'mirror_mode', { type: 'string', description: 'Mirror Mode' } ]
+[ 'mirror_mode', { type: 'string', default: null } ]
+[ 'direction', { type: 'string' } ]
+[ 'token', { type: 'string' } ]
+[ 'cluster_name', { type: 'string' } ]
+[ 'client_id', { type: 'string' } ]
+[ 'mon_host', { type: 'string', default: null } ]
+[ 'key', { type: 'string', default: null } ]
+[ 'cluster_name', { type: 'string', default: null } ]
+[ 'client_id', { type: 'string', default: null } ]
+[ 'mon_host', { type: 'string', default: null } ]
+[ 'key', { type: 'string', default: null } ]
+------S-------
+R23A0B1poi200
+-------E------
+[ 'site_name', { type: 'string', description: 'Site Name' } ]
+[ 'site_name', { type: 'string' } ]
+------S-------
+R24A0Bsxjd200
+-------E------
+[ 'site_name', { type: 'string', description: 'site name' } ]
+[ 'status', { type: 'integer', description: '' } ]
+[
+  'content_data',
+  {
+    type: 'object',
+    properties: {
+      daemons: [Object],
+      pools: [Object],
+      image_error: [Object],
+      image_syncing: [Object],
+      image_ready: [Object]
+    },
+    required: [
+      'daemons',
+      'pools',
+      'image_error',
+      'image_syncing',
+      'image_ready'
+    ],
+    description: ''
+  }
+]
+[ 'namespace', { type: 'string' } ]
+------S-------
+R34A0Bm5ph200
+-------E------
+[ 'max_bytes', { type: 'integer', description: '' } ]
+[ 'max_files', { type: 'integer', description: '' } ]
+[ 'path', { type: 'string' } ]
+[ 'max_bytes', { type: 'string', default: null } ]
+[ 'max_files', { type: 'string', default: null } ]
+[ 'path', { type: 'string' } ]
+[ 'name', { type: 'string', default: null } ]
+[ 'path', { type: 'string' } ]
+[ 'status', { type: 'string', description: 'Cluster Status' } ]
+[ 'name', { type: 'string' } ]
+[ 'value', { type: 'string' } ]
+[ 'options', { type: 'string' } ]
+------S-------
+R39A0Bf8cz200
+-------E------
+------S-------
+R41A0B5q1p200
+-------E------
+[ 'rule_id', { type: 'integer', description: 'Rule ID' } ]
+[ 'rule_name', { type: 'string', description: 'Rule Name' } ]
+[
+  'ruleset',
+  { type: 'integer', description: 'RuleSet related to the rule' }
+]
+[ 'type', { type: 'integer', description: 'Type of Rule' } ]
+[
+  'min_size',
+  { type: 'integer', description: 'Minimum size of Rule' }
+]
+[
+  'max_size',
+  { type: 'integer', description: 'Maximum size of Rule' }
+]
+[
+  'steps',
+  {
+    type: 'array',
+    items: { type: 'object' },
+    description: 'Steps included in the rule'
+  }
+]
+[ 'name', { type: 'string' } ]
+[ 'root', { type: 'string' } ]
+[ 'failure_domain', { type: 'string' } ]
+[ 'device_class', { type: 'string', default: null } ]
+[ 'action', { type: 'string', default: '' } ]
+[ 'container_image', { type: 'string', default: null } ]
+------S-------
+R44A0B1lv6200
+-------E------
+[ 'name', { type: 'string' } ]
+------S-------
+R46A0Bjal1200
+-------E------
+[ 'rbd', { type: 'boolean', description: '' } ]
+[ 'mirroring', { type: 'boolean', description: '' } ]
+[ 'iscsi', { type: 'boolean', description: '' } ]
+[ 'cephfs', { type: 'boolean', description: '' } ]
+[ 'rgw', { type: 'boolean', description: '' } ]
+[ 'nfs', { type: 'boolean', description: '' } ]
+[ 'project', { type: 'string' } ]
+[ 'tracker', { type: 'string' } ]
+[ 'subject', { type: 'string' } ]
+[ 'description', { type: 'string' } ]
+[ 'api_key', { type: 'string', default: null } ]
+[ 'api_key', { type: 'string' } ]
+------S-------
+R50A0B6zi3200
+-------E------
+[ 'instance', { type: 'string', description: 'grafana instance' } ]
+------S-------
+R53A0Bbnyf200
+-------E------
+[
+  'client_perf',
+  {
+    type: 'object',
+    properties: {
+      read_bytes_sec: [Object],
+      read_op_per_sec: [Object],
+      recovering_bytes_per_sec: [Object],
+      write_bytes_sec: [Object],
+      write_op_per_sec: [Object]
+    },
+    required: [
+      'read_bytes_sec',
+      'read_op_per_sec',
+      'recovering_bytes_per_sec',
+      'write_bytes_sec',
+      'write_op_per_sec'
+    ],
+    description: ''
+  }
+]
+[
+  'df',
+  {
+    type: 'object',
+    properties: { stats: [Object] },
+    required: [ 'stats' ],
+    description: ''
+  }
+]
+[
+  'fs_map',
+  {
+    type: 'object',
+    properties: { filesystems: [Object] },
+    required: [ 'filesystems' ],
+    description: ''
+  }
+]
+[
+  'health',
+  {
+    type: 'object',
+    properties: { checks: [Object], mutes: [Object], status: [Object] },
+    required: [ 'checks', 'mutes', 'status' ],
+    description: ''
+  }
+]
+[ 'hosts', { type: 'integer', description: '' } ]
+[
+  'iscsi_daemons',
+  {
+    type: 'object',
+    properties: { up: [Object], down: [Object] },
+    required: [ 'up', 'down' ],
+    description: ''
+  }
+]
+[
+  'mgr_map',
+  {
+    type: 'object',
+    properties: { active_name: [Object], standbys: [Object] },
+    required: [ 'active_name', 'standbys' ],
+    description: ''
+  }
+]
+[
+  'mon_status',
+  {
+    type: 'object',
+    properties: { monmap: [Object], quorum: [Object] },
+    required: [ 'monmap', 'quorum' ],
+    description: ''
+  }
+]
+[
+  'osd_map',
+  {
+    type: 'object',
+    properties: { osds: [Object] },
+    required: [ 'osds' ],
+    description: ''
+  }
+]
+[
+  'pg_info',
+  {
+    type: 'object',
+    properties: {
+      object_stats: [Object],
+      pgs_per_osd: [Object],
+      statuses: [Object]
+    },
+    required: [ 'object_stats', 'pgs_per_osd', 'statuses' ],
+    description: ''
+  }
+]
+[ 'pools', { type: 'string', description: '' } ]
+[ 'rgw', { type: 'integer', description: '' } ]
+[ 'scrub_status', { type: 'string', description: '' } ]
+------S-------
+R54A0Bn5wj200
+-------E------
+[ 'hostname', { type: 'string', description: 'Hostname' } ]
+[
+  'services',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'Services related to the host'
+  }
+]
+[ 'ceph_version', { type: 'string', description: 'Ceph version' } ]
+[ 'addr', { type: 'string', description: 'Host address' } ]
+[
+  'labels',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Labels related to the host'
+  }
+]
+[ 'service_type', { type: 'string', description: '' } ]
+[
+  'sources',
+  {
+    type: 'object',
+    properties: { ceph: [Object], orchestrator: [Object] },
+    required: [ 'ceph', 'orchestrator' ],
+    description: 'Host Sources'
+  }
+]
+[ 'status', { type: 'string', description: '' } ]
+[ 'hostname', { type: 'string', description: 'Hostname' } ]
+[
+  'addr',
+  { type: 'string', description: 'Network Address', default: null }
+]
+[
+  'labels',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Host Labels',
+    default: null
+  }
+]
+[
+  'status',
+  { type: 'string', description: 'Host Status', default: null }
+]
+[
+  'update_labels',
+  { type: 'boolean', description: 'Update Labels', default: false }
+]
+[
+  'labels',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Host Labels',
+    default: null
+  }
+]
+[
+  'maintenance',
+  {
+    type: 'boolean',
+    description: 'Enter/Exit Maintenance',
+    default: false
+  }
+]
+[
+  'force',
+  {
+    type: 'boolean',
+    description: 'Force Enter Maintenance',
+    default: false
+  }
+]
+[
+  'drain',
+  { type: 'boolean', description: 'Drain Host', default: false }
+]
+------S-------
+R55A1B3b69200
+-------E------
+[ 'device', { type: 'string' } ]
+[ 'duration', { type: 'string' } ]
+------S-------
+R59A0B968j200
+-------E------
+[ 'name', { type: 'string', description: 'Hostname' } ]
+[ 'addr', { type: 'string', description: 'Host address' } ]
+[
+  'devices',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'Host devices'
+  }
+]
+[
+  'labels',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Host labels'
+  }
+]
+------S-------
+R61A0Bexkr200
+-------E------
+[ 'user', { type: 'string', description: 'Username' } ]
+[ 'password', { type: 'string', description: 'Password' } ]
+[ 'mutual_user', { type: 'string', description: 'Mutual UserName' } ]
+[
+  'mutual_password',
+  { type: 'string', description: 'Mutual Password' }
+]
+[ 'target_iqn', { type: 'string', default: null } ]
+[ 'target_controls', { type: 'string', default: null } ]
+[ 'acl_enabled', { type: 'string', default: null } ]
+[ 'auth', { type: 'string', default: null } ]
+[ 'portals', { type: 'string', default: null } ]
+[ 'disks', { type: 'string', default: null } ]
+[ 'clients', { type: 'string', default: null } ]
+[ 'groups', { type: 'string', default: null } ]
+[ 'new_target_iqn', { type: 'string', default: null } ]
+[ 'target_controls', { type: 'string', default: null } ]
+[ 'acl_enabled', { type: 'string', default: null } ]
+[ 'auth', { type: 'string', default: null } ]
+[ 'portals', { type: 'string', default: null } ]
+[ 'disks', { type: 'string', default: null } ]
+[ 'clients', { type: 'string', default: null } ]
+[ 'groups', { type: 'string', default: null } ]
+------S-------
+R64A0Boxvq200
+-------E------
+[
+  'clog',
+  { type: 'array', items: { type: 'string' }, description: '' }
+]
+[
+  'audit_log',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'Audit log'
+  }
+]
+------S-------
+R65A0Bqdiw200
+-------E------
+[ 'config', { type: 'string' } ]
+------S-------
+R70A0Ba5di200
+-------E------
+[
+  'mon_status',
+  {
+    type: 'object',
+    properties: {
+      name: [Object],
+      rank: [Object],
+      state: [Object],
+      election_epoch: [Object],
+      quorum: [Object],
+      quorum_age: [Object],
+      features: [Object],
+      outside_quorum: [Object],
+      extra_probe_peers: [Object],
+      sync_provider: [Object],
+      monmap: [Object],
+      feature_map: [Object]
+    },
+    required: [
+      'name',
+      'rank',
+      'state',
+      'election_epoch',
+      'quorum',
+      'quorum_age',
+      'features',
+      'outside_quorum',
+      'extra_probe_peers',
+      'sync_provider',
+      'monmap',
+      'feature_map'
+    ],
+    description: ''
+  }
+]
+[
+  'in_quorum',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: ''
+  }
+]
+[
+  'out_quorum',
+  { type: 'array', items: { type: 'integer' }, description: '' }
+]
+------S-------
+R72A0Buntk200
+-------E------
+[ 'path', { type: 'string', description: 'Export path' } ]
+[ 'cluster_id', { type: 'string', description: 'Cluster identifier' } ]
+[ 'pseudo', { type: 'string', description: 'Pseudo FS path' } ]
+[
+  'access_type',
+  { type: 'string', description: 'Export access type' }
+]
+[ 'squash', { type: 'string', description: 'Export squash policy' } ]
+[ 'security_label', { type: 'string', description: 'Security label' } ]
+[
+  'protocols',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of protocol types'
+  }
+]
+[
+  'transports',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of transport types'
+  }
+]
+[
+  'fsal',
+  {
+    type: 'object',
+    properties: { name: [Object], fs_name: [Object], sec_label_xattr: [Object] },
+    required: [ 'name' ],
+    description: 'FSAL configuration'
+  }
+]
+[
+  'clients',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'List of client configurations'
+  }
+]
+------S-------
+R72A1Bq5jn201
+-------E------
+[ 'export_id', { type: 'integer', description: 'Export ID' } ]
+[ 'path', { type: 'string', description: 'Export path' } ]
+[ 'cluster_id', { type: 'string', description: 'Cluster identifier' } ]
+[ 'pseudo', { type: 'string', description: 'Pseudo FS path' } ]
+[
+  'access_type',
+  { type: 'string', description: 'Export access type' }
+]
+[ 'squash', { type: 'string', description: 'Export squash policy' } ]
+[ 'security_label', { type: 'string', description: 'Security label' } ]
+[
+  'protocols',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of protocol types'
+  }
+]
+[
+  'transports',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of transport types'
+  }
+]
+[
+  'fsal',
+  {
+    type: 'object',
+    properties: {
+      name: [Object],
+      fs_name: [Object],
+      sec_label_xattr: [Object],
+      user_id: [Object]
+    },
+    required: [ 'name' ],
+    description: 'FSAL configuration'
+  }
+]
+[
+  'clients',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'List of client configurations'
+  }
+]
+------S-------
+R73A0Bx8xa200
+-------E------
+[ 'export_id', { type: 'integer', description: 'Export ID' } ]
+[ 'path', { type: 'string', description: 'Export path' } ]
+[ 'cluster_id', { type: 'string', description: 'Cluster identifier' } ]
+[ 'pseudo', { type: 'string', description: 'Pseudo FS path' } ]
+[
+  'access_type',
+  { type: 'string', description: 'Export access type' }
+]
+[ 'squash', { type: 'string', description: 'Export squash policy' } ]
+[ 'security_label', { type: 'string', description: 'Security label' } ]
+[
+  'protocols',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of protocol types'
+  }
+]
+[
+  'transports',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of transport types'
+  }
+]
+[
+  'fsal',
+  {
+    type: 'object',
+    properties: {
+      name: [Object],
+      fs_name: [Object],
+      sec_label_xattr: [Object],
+      user_id: [Object]
+    },
+    required: [ 'name' ],
+    description: 'FSAL configuration'
+  }
+]
+[
+  'clients',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'List of client configurations'
+  }
+]
+[ 'path', { type: 'string', description: 'Export path' } ]
+[ 'pseudo', { type: 'string', description: 'Pseudo FS path' } ]
+[
+  'access_type',
+  { type: 'string', description: 'Export access type' }
+]
+[ 'squash', { type: 'string', description: 'Export squash policy' } ]
+[ 'security_label', { type: 'string', description: 'Security label' } ]
+[
+  'protocols',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of protocol types'
+  }
+]
+[
+  'transports',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of transport types'
+  }
+]
+[
+  'fsal',
+  {
+    type: 'object',
+    properties: { name: [Object], fs_name: [Object], sec_label_xattr: [Object] },
+    required: [ 'name' ],
+    description: 'FSAL configuration'
+  }
+]
+[
+  'clients',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'List of client configurations'
+  }
+]
+------S-------
+R73A1Bn42l200
+-------E------
+[ 'export_id', { type: 'integer', description: 'Export ID' } ]
+[ 'path', { type: 'string', description: 'Export path' } ]
+[ 'cluster_id', { type: 'string', description: 'Cluster identifier' } ]
+[ 'pseudo', { type: 'string', description: 'Pseudo FS path' } ]
+[
+  'access_type',
+  { type: 'string', description: 'Export access type' }
+]
+[ 'squash', { type: 'string', description: 'Export squash policy' } ]
+[ 'security_label', { type: 'string', description: 'Security label' } ]
+[
+  'protocols',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of protocol types'
+  }
+]
+[
+  'transports',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of transport types'
+  }
+]
+[
+  'fsal',
+  {
+    type: 'object',
+    properties: {
+      name: [Object],
+      fs_name: [Object],
+      sec_label_xattr: [Object],
+      user_id: [Object]
+    },
+    required: [ 'name' ],
+    description: 'FSAL configuration'
+  }
+]
+[
+  'clients',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: 'List of client configurations'
+  }
+]
+[ 'method', { type: 'string' } ]
+[ 'data', { type: 'string' } ]
+[ 'tracking_id', { type: 'string' } ]
+------S-------
+R75A0B0rbc200
+-------E------
+[
+  'list_of_flags',
+  { type: 'array', items: { type: 'string' }, description: '' }
+]
+[
+  'flags',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of flags to set. The flags `recovery_deletes`, `sortbitwise` and `pglog_hardlimit` cannot be unset. Additionally `purged_snapshots` cannot even be set.'
+  }
+]
+------S-------
+R75A1B4jsh200
+-------E------
+[
+  'list_of_flags',
+  { type: 'array', items: { type: 'string' }, description: '' }
+]
+------S-------
+R76A0B6rw5200
+-------E------
+[ 'osd', { type: 'integer', description: 'OSD ID' } ]
+[
+  'flags',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of active flags'
+  }
+]
+[
+  'flags',
+  {
+    type: 'object',
+    properties: {
+      noout: [Object],
+      noin: [Object],
+      noup: [Object],
+      nodown: [Object]
+    },
+    description: 'Directory of flags to set or unset. The flags `noin`, `noout`, `noup` and `nodown` are going to be considered only.'
+  }
+]
+[
+  'ids',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of OSD ids the flags should be applied to.'
+  }
+]
+------S-------
+R76A1Bnj1q200
+-------E------
+[
+  'added',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of added flags'
+  }
+]
+[
+  'removed',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'List of removed flags'
+  }
+]
+[
+  'ids',
+  {
+    type: 'array',
+    items: { type: 'integer' },
+    description: 'List of updated OSDs'
+  }
+]
+------S-------
+R78A0B8i0r200
+-------E------
+[
+  'safe_to_destroy',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Is OSD safe to destroy?'
+  }
+]
+[
+  'active',
+  { type: 'array', items: { type: 'integer' }, description: '' }
+]
+[
+  'missing_stats',
+  { type: 'array', items: { type: 'string' }, description: '' }
+]
+[
+  'stored_pgs',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'Stored Pool groups in Osd'
+  }
+]
+[
+  'is_safe_to_destroy',
+  { type: 'boolean', description: 'Is OSD safe to destroy?' }
+]
+[ 'device_class', { type: 'string' } ]
+[ 'action', { type: 'string' } ]
+[ 'weight', { type: 'string' } ]
+[ 'deep', { type: 'boolean', default: false } ]
+------S-------
+R89A0B5od8200
+-------E------
+[
+  'mon.a',
+  {
+    type: 'object',
+    properties: { '.cache_bytes': [Object] },
+    required: [ '.cache_bytes' ],
+    description: 'Service ID'
+  }
+]
+------S-------
+R97A0B7ikq200
+-------E------
+[ 'pool', { type: 'string', default: 'rbd-mirror' } ]
+[ 'flags', { type: 'string', default: null } ]
+[ 'application_metadata', { type: 'string', default: null } ]
+[ 'configuration', { type: 'string', default: null } ]
+[ 'bucket', { type: 'string' } ]
+[ 'uid', { type: 'string' } ]
+[ 'zonegroup', { type: 'string', default: null } ]
+[ 'placement_target', { type: 'string', default: null } ]
+[ 'lock_enabled', { type: 'string', default: 'false' } ]
+[ 'lock_mode', { type: 'string', default: null } ]
+[ 'lock_retention_period_days', { type: 'string', default: null } ]
+[ 'lock_retention_period_years', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'bucket_id', { type: 'string' } ]
+[ 'uid', { type: 'string' } ]
+[ 'versioning_state', { type: 'string', default: null } ]
+[ 'mfa_delete', { type: 'string', default: null } ]
+[ 'mfa_token_serial', { type: 'string', default: null } ]
+[ 'mfa_token_pin', { type: 'string', default: null } ]
+[ 'lock_mode', { type: 'string', default: null } ]
+[ 'lock_retention_period_days', { type: 'string', default: null } ]
+[ 'lock_retention_period_years', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+------S-------
+R108A0Bzsaj200
+-------E------
+------S-------
+R111A0Boblf200
+-------E------
+[
+  'list_of_users',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'list of rgw users'
+  }
+]
+[ 'uid', { type: 'string' } ]
+[ 'display_name', { type: 'string' } ]
+[ 'email', { type: 'string', default: null } ]
+[ 'max_buckets', { type: 'string', default: null } ]
+[ 'suspended', { type: 'string', default: null } ]
+[ 'generate_key', { type: 'string', default: null } ]
+[ 'access_key', { type: 'string', default: null } ]
+[ 'secret_key', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'display_name', { type: 'string', default: null } ]
+[ 'email', { type: 'string', default: null } ]
+[ 'max_buckets', { type: 'string', default: null } ]
+[ 'suspended', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'type', { type: 'string' } ]
+[ 'perm', { type: 'string' } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'key_type', { type: 'string', default: 's3' } ]
+[ 'subuser', { type: 'string', default: null } ]
+[ 'generate_key', { type: 'string', default: 'true' } ]
+[ 'access_key', { type: 'string', default: null } ]
+[ 'secret_key', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'quota_type', { type: 'string' } ]
+[ 'enabled', { type: 'string' } ]
+[ 'max_size_kb', { type: 'integer' } ]
+[ 'max_objects', { type: 'string' } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+[ 'subuser', { type: 'string' } ]
+[ 'access', { type: 'string' } ]
+[ 'key_type', { type: 'string', default: 's3' } ]
+[ 'generate_secret', { type: 'string', default: 'true' } ]
+[ 'access_key', { type: 'string', default: null } ]
+[ 'secret_key', { type: 'string', default: null } ]
+[ 'daemon_name', { type: 'string', default: null } ]
+------S-------
+R119A0Bfdjr200
+-------E------
+[ 'name', { type: 'string', default: null } ]
+[ 'description', { type: 'string', default: null } ]
+[ 'scopes_permissions', { type: 'string', default: null } ]
+[ 'description', { type: 'string', default: null } ]
+[ 'scopes_permissions', { type: 'string', default: null } ]
+[ 'new_name', { type: 'string' } ]
+[ 'service_spec', { type: 'string' } ]
+[ 'service_name', { type: 'string' } ]
+[ 'service_spec', { type: 'string' } ]
+------S-------
+R126A0Bjkdv200
+-------E------
+[ 'value', { type: 'string' } ]
+------S-------
+R128A0Bwd0p200
+-------E------
+[ 'health_status', { type: 'string', description: '' } ]
+[ 'mgr_id', { type: 'string', description: '' } ]
+[ 'mgr_host', { type: 'string', description: '' } ]
+[ 'have_mon_connection', { type: 'string', description: '' } ]
+[
+  'executing_tasks',
+  { type: 'array', items: { type: 'string' }, description: '' }
+]
+[
+  'finished_tasks',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: ''
+  }
+]
+[ 'version', { type: 'string', description: '' } ]
+[
+  'rbd_mirroring',
+  {
+    type: 'object',
+    properties: { warnings: [Object], errors: [Object] },
+    required: [ 'warnings', 'errors' ],
+    description: ''
+  }
+]
+------S-------
+R129A0Brccr200
+-------E------
+[
+  'executing_tasks',
+  { type: 'string', description: 'ongoing executing tasks' }
+]
+[
+  'finished_tasks',
+  {
+    type: 'array',
+    items: { type: 'object', properties: [Object], required: [Array] },
+    description: ''
+  }
+]
+[ 'enable', { type: 'boolean', default: true } ]
+[ 'license_name', { type: 'string', default: null } ]
+------S-------
+R131A0Bd4sp200
+-------E------
+[
+  'report',
+  {
+    type: 'object',
+    properties: {
+      leaderboard: [Object],
+      report_version: [Object],
+      report_timestamp: [Object],
+      report_id: [Object],
+      channels: [Object],
+      channels_available: [Object],
+      license: [Object],
+      created: [Object],
+      mon: [Object],
+      config: [Object],
+      rbd: [Object],
+      pools: [Object],
+      osd: [Object],
+      crush: [Object],
+      fs: [Object],
+      metadata: [Object],
+      hosts: [Object],
+      usage: [Object],
+      services: [Object],
+      rgw: [Object],
+      balancer: [Object],
+      crashes: [Object]
+    },
+    required: [
+      'leaderboard',      'report_version',
+      'report_timestamp', 'report_id',
+      'channels',         'channels_available',
+      'license',          'created',
+      'mon',              'config',
+      'rbd',              'pools',
+      'osd',              'crush',
+      'fs',               'metadata',
+      'hosts',            'usage',
+      'services',         'rgw',
+      'balancer',         'crashes'
+    ],
+    description: ''
+  }
+]
+[ 'device_report', { type: 'string', description: '' } ]
+------S-------
+R132A0B5h5f200
+-------E------
+[ 'username', { type: 'string', description: 'Username of the user' } ]
+[
+  'roles',
+  {
+    type: 'array',
+    items: { type: 'string' },
+    description: 'User Roles'
+  }
+]
+[ 'name', { type: 'string', description: 'User Name' } ]
+[ 'email', { type: 'string', description: 'User email address' } ]
+[
+  'lastUpdate',
+  { type: 'integer', description: 'Details last updated' }
+]
+[ 'enabled', { type: 'boolean', description: 'Is the user enabled?' } ]
+[
+  'pwdExpirationDate',
+  { type: 'string', description: 'Password Expiration date' }
+]
+[
+  'pwdUpdateRequired',
+  { type: 'boolean', description: 'Is Password Update Required?' }
+]
+[ 'username', { type: 'string', default: null } ]
+[ 'password', { type: 'string', default: null } ]
+[ 'name', { type: 'string', default: null } ]
+[ 'email', { type: 'string', default: null } ]
+[ 'roles', { type: 'string', default: null } ]
+[ 'enabled', { type: 'boolean', default: true } ]
+[ 'pwdExpirationDate', { type: 'string', default: null } ]
+[ 'pwdUpdateRequired', { type: 'boolean', default: true } ]
+[ 'password', { type: 'string' } ]
+[ 'username', { type: 'string', default: null } ]
+[ 'old_password', { type: 'string', default: null } ]
+[ 'password', { type: 'string', default: null } ]
+[ 'name', { type: 'string', default: null } ]
+[ 'email', { type: 'string', default: null } ]
+[ 'roles', { type: 'string', default: null } ]
+[ 'enabled', { type: 'string', default: null } ]
+[ 'pwdExpirationDate', { type: 'string', default: null } ]
+[ 'pwdUpdateRequired', { type: 'boolean', default: false } ]
+[ 'old_password', { type: 'string' } ]
+[ 'new_password', { type: 'string' } ]
+{
+  name: 'R132A0B5h5f200',
+  properties: [
+    {
+      name: 'username',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'roles',
+      type: 'array',
+      typeItems: 'string',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'name',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'email',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'lastUpdate',
+      type: 'integer',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'enabled',
+      type: 'boolean',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'pwdExpirationDate',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    },
+    {
+      name: 'pwdUpdateRequired',
+      type: 'boolean',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false
+    }
+  ]
+}

@@ -26,7 +26,7 @@ const utils = require('./utils');
 const rs = require('./responses');
 
 module.exports = {
-    payloadAllProps,
+    payloadKeris,
     transformApi,
     mappingEntities,
     mappingFields,
@@ -52,14 +52,14 @@ module.exports = {
     properties: [{}]
   }
  */
-function payloadAllProps(api, appsName) {
-    const _props = []
-    const entitiesAdded = []
-    const _uniqprop =  utils.uniqProperties(_props)
-    const properties = _uniqprop? _uniqprop :[]
-    const paths = path.getPaths(api, _props, entitiesAdded)
+function payloadKeris(api, appsName) {
+    const props = []
+    const entitiesFromResponse = []
+    const uniqprop =  utils.uniqProperties(props)
+    const properties = uniqprop? uniqprop :[]
+    const paths = path.transformPaths(api, props, entitiesFromResponse)
     const services = mappingServices(paths, api, 'dart', properties )
-    const _entities = mappingEntities(appsName, api, entitiesAdded)
+    const entities = mappingEntities(appsName, api, entitiesFromResponse)
     
 
     const schema =  {
@@ -72,7 +72,7 @@ function payloadAllProps(api, appsName) {
         //tags: api.tags,
         services: services,
         //paths: paths, 
-        entities: _entities.length > 0 ? _entities: entityFromProperties(_uniqprop),
+        entities: entities.length > 0 ? entities: entityFromProperties(uniqprop),
         properties: properties
     }
 
@@ -85,13 +85,12 @@ function payloadAllProps(api, appsName) {
  * @param {*} api OpenAPi object
  * @returns entites
  */
-function mappingEntities(appsName, api, entitiesAdded) {
+function mappingEntities(appsName, api, entitiesFromResponse) {
 
     const schema = api.components ? api.components.schemas : null
-   const entities = []
-
+    const entities = []
   
-   entitiesAdded.forEach(entity => {
+    entitiesFromResponse.forEach(entity => {
       entities.push({
         appsName: appsName,
         pkType: 'String',
@@ -217,7 +216,7 @@ function transformApi(appsName, path, callback) {
             console.error(err);
         }
         else {
-            callback(payloadAllProps(api, appsName), api)
+            callback(payloadKeris(api, appsName), api)
         }
     })
 }
@@ -237,11 +236,12 @@ function mappingServices(paths, api, lang, properties) {
       
         let externalDoc = ''
         let description = ''
-        const response= rs.getResponseType(paths[i].methods[m].responses, properties)
+        const response = rs.getResponseType(paths[i].methods[m].responses, properties)
 
         let responseType = response.responseType
+
         // PARAMETER
-        const param = putParam(paths[i].methods[m], responseType, lang);
+        const param = transformParam(paths[i].methods[m], responseType, lang);
 
         const method = _transMethod(paths[i].methods[m].method, param);
         
@@ -265,6 +265,7 @@ function mappingServices(paths, api, lang, properties) {
             desc: paths[i].methods[m].description ? paths[i].methods[m].description : description,
             responseType: responseType,
             hasResponse: response.hasResponse,
+            isComponentArray: response.isComponentArray,
             parametersString: parameters,
             query: query,
             requestPayload: method.payload,
@@ -292,7 +293,8 @@ function mappingServices(paths, api, lang, properties) {
  * @param {*} resType 
  * @returns 
  */
-function putParam(input, resType, lang) {
+function transformParam(input, resType, lang) {
+
     let _param = '';
     let param = {}
     let isProp = false
@@ -300,7 +302,7 @@ function putParam(input, resType, lang) {
     let dartParam = ''
     let jsonParam = ''
     let query = ''
-    let payloadStatement = 'const ' + resType.toLowerCase() + ' = ' + resType + '(';
+    let payloadStatement = 'const ' + resType?resType.toLowerCase():'' + ' = ' + resType + '(';
   
     if (input.parameters)
       param = input.parameters
@@ -336,7 +338,7 @@ function putParam(input, resType, lang) {
           and = '%26'
   
         if (param[p].in == 'query') {
-          query += and + param[p].name + '=${' + param[p].name + '}'
+          query += and + param[p].name + '=$' + param[p].name
           q++;
         }
         n--;
@@ -363,7 +365,7 @@ function putParam(input, resType, lang) {
       dartParam: dartParam,
       jsonParam: jsonParam
     };
-  }
+}
 
   
   

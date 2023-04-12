@@ -1,0 +1,4756 @@
+asd342asd
+asd-pp@p%^&*()+=|}{[];:<>,p/asd
+[
+  {
+    name: 'username',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'token',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Authentication Token'
+  }
+]
+------S-------
+R1A0B0jxm201
+-------E------
+[
+  {
+    name: 'username',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Username'
+  },
+  {
+    name: 'permissions',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of permissions acquired'
+  },
+  {
+    name: 'sso',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Uses single sign on?'
+  },
+  {
+    name: 'pwdUpdateRequired',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Is password update required?'
+  }
+]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R3A0Bbeci200
+-------E------
+[]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'pool_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'namespace',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'schedule_interval',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'obj_size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'features',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_unit',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_count',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'data_pool',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'configuration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mirror_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R6A0B34ut200
+-------E------
+[]
+[
+  {
+    name: 'pool_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'new_image_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'features',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'configuration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'enable_mirror',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'primary',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'resync',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mirror_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'schedule_interval',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'remove_scheduling',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'dest_pool_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'dest_namespace',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'dest_image_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'snapshot_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'obj_size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'features',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_unit',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_count',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'data_pool',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'configuration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'delay',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'snapshot_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'new_snap_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'is_protected',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'child_pool_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'child_image_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'child_namespace',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'obj_size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'features',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_unit',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stripe_count',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'data_pool',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'configuration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R18A0Biiw8200
+-------E------
+[
+  {
+    name: 'mirror_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Mirror Mode'
+  }
+]
+[
+  {
+    name: 'mirror_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'direction',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'token',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'cluster_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'client_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'mon_host',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'cluster_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'client_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mon_host',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R23A0Bahi2200
+-------E------
+[
+  {
+    name: 'site_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Site Name'
+  }
+]
+[
+  {
+    name: 'site_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R24A0B57fb200
+-------E------
+[
+  {
+    name: 'site_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'site name'
+  },
+  {
+    name: 'status',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'content_data',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'namespace',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R34A0Bbtnr200
+-------E------
+[
+  {
+    name: 'max_bytes',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'max_files',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'max_bytes',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'max_files',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'status',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Cluster Status'
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'value',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'options',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R39A0Bzwvs200
+-------E------
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R41A0B1sin200
+-------E------
+[
+  {
+    name: 'rule_id',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Rule ID'
+  },
+  {
+    name: 'rule_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Rule Name'
+  },
+  {
+    name: 'ruleset',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'RuleSet related to the rule'
+  },
+  {
+    name: 'type',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Type of Rule'
+  },
+  {
+    name: 'min_size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Minimum size of Rule'
+  },
+  {
+    name: 'max_size',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Maximum size of Rule'
+  },
+  {
+    name: 'steps',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Steps included in the rule'
+  }
+]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'root',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'failure_domain',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'device_class',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'action',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'container_image',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R44A0B5b6f200
+-------E------
+[]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R46A0B1g3c200
+-------E------
+[
+  {
+    name: 'rbd',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mirroring',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'iscsi',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'cephfs',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'rgw',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'nfs',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'project',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'tracker',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'subject',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'description',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'api_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'api_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R50A0Bvpep200
+-------E------
+[
+  {
+    name: 'instance',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'grafana instance'
+  }
+]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R53A0Bnqgl200
+-------E------
+[
+  {
+    name: 'client_perf',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'df',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'fs_map',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'health',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'hosts',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'iscsi_daemons',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mgr_map',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mon_status',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'osd_map',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pg_info',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pools',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'rgw',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'scrub_status',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+------S-------
+R54A0B9v7c200
+-------E------
+[
+  {
+    name: 'hostname',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Hostname'
+  },
+  {
+    name: 'services',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Services related to the host'
+  },
+  {
+    name: 'ceph_version',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Ceph version'
+  },
+  {
+    name: 'addr',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host address'
+  },
+  {
+    name: 'labels',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Labels related to the host'
+  },
+  {
+    name: 'service_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'sources',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host Sources'
+  },
+  {
+    name: 'status',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[
+  {
+    name: 'hostname',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Hostname'
+  },
+  {
+    name: 'addr',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Network Address'
+  },
+  {
+    name: 'labels',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host Labels'
+  },
+  {
+    name: 'status',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host Status'
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'update_labels',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Update Labels'
+  },
+  {
+    name: 'labels',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host Labels'
+  },
+  {
+    name: 'maintenance',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Enter/Exit Maintenance'
+  },
+  {
+    name: 'force',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Force Enter Maintenance'
+  },
+  {
+    name: 'drain',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Drain Host'
+  }
+]
+------S-------
+R55A1Bnn9l200
+-------E------
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'device',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'duration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R59A0Bqfcd200
+-------E------
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Hostname'
+  },
+  {
+    name: 'addr',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host address'
+  },
+  {
+    name: 'devices',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host devices'
+  },
+  {
+    name: 'labels',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Host labels'
+  }
+]
+[]
+[]
+[]
+------S-------
+R61A0Blgex200
+-------E------
+[]
+[
+  {
+    name: 'user',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Username'
+  },
+  {
+    name: 'password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Password'
+  },
+  {
+    name: 'mutual_user',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Mutual UserName'
+  },
+  {
+    name: 'mutual_password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Mutual Password'
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'target_iqn',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'target_controls',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'acl_enabled',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'auth',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'portals',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'disks',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'clients',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'groups',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'new_target_iqn',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'target_controls',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'acl_enabled',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'auth',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'portals',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'disks',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'clients',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'groups',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R64A0Besjh200
+-------E------
+[
+  {
+    name: 'clog',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'audit_log',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Audit log'
+  }
+]
+[]
+------S-------
+R65A0Bf2kp200
+-------E------
+[]
+[]
+[]
+[
+  {
+    name: 'config',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R70A0Btkwc200
+-------E------
+[
+  {
+    name: 'mon_status',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'in_quorum',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'out_quorum',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R72A0Bzeo6200
+-------E------
+[]
+[
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export path'
+  },
+  {
+    name: 'cluster_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Cluster identifier'
+  },
+  {
+    name: 'pseudo',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Pseudo FS path'
+  },
+  {
+    name: 'access_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export access type'
+  },
+  {
+    name: 'squash',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export squash policy'
+  },
+  {
+    name: 'security_label',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Security label'
+  },
+  {
+    name: 'protocols',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of protocol types'
+  },
+  {
+    name: 'transports',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of transport types'
+  },
+  {
+    name: 'fsal',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'FSAL configuration'
+  },
+  {
+    name: 'clients',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of client configurations'
+  }
+]
+------S-------
+R72A1Br38t201
+-------E------
+[
+  {
+    name: 'export_id',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export ID'
+  },
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export path'
+  },
+  {
+    name: 'cluster_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Cluster identifier'
+  },
+  {
+    name: 'pseudo',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Pseudo FS path'
+  },
+  {
+    name: 'access_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export access type'
+  },
+  {
+    name: 'squash',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export squash policy'
+  },
+  {
+    name: 'security_label',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Security label'
+  },
+  {
+    name: 'protocols',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of protocol types'
+  },
+  {
+    name: 'transports',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of transport types'
+  },
+  {
+    name: 'fsal',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'FSAL configuration'
+  },
+  {
+    name: 'clients',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of client configurations'
+  }
+]
+[]
+[]
+------S-------
+R73A0Bvyuh200
+-------E------
+[
+  {
+    name: 'export_id',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export ID'
+  },
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export path'
+  },
+  {
+    name: 'cluster_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Cluster identifier'
+  },
+  {
+    name: 'pseudo',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Pseudo FS path'
+  },
+  {
+    name: 'access_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export access type'
+  },
+  {
+    name: 'squash',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export squash policy'
+  },
+  {
+    name: 'security_label',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Security label'
+  },
+  {
+    name: 'protocols',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of protocol types'
+  },
+  {
+    name: 'transports',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of transport types'
+  },
+  {
+    name: 'fsal',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'FSAL configuration'
+  },
+  {
+    name: 'clients',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of client configurations'
+  }
+]
+[
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export path'
+  },
+  {
+    name: 'pseudo',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Pseudo FS path'
+  },
+  {
+    name: 'access_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export access type'
+  },
+  {
+    name: 'squash',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Export squash policy'
+  },
+  {
+    name: 'security_label',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Security label'
+  },
+  {
+    name: 'protocols',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of protocol types'
+  },
+  {
+    name: 'transports',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of transport types'
+  },
+  {
+    name: 'fsal',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'FSAL configuration'
+  },
+  {
+    name: 'clients',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of client configurations'
+  }
+]
+------S-------
+R73A1B6wcj200
+-------E------
+[
+  {
+    name: 'export_id',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export ID'
+  },
+  {
+    name: 'path',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export path'
+  },
+  {
+    name: 'cluster_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Cluster identifier'
+  },
+  {
+    name: 'pseudo',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Pseudo FS path'
+  },
+  {
+    name: 'access_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export access type'
+  },
+  {
+    name: 'squash',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Export squash policy'
+  },
+  {
+    name: 'security_label',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Security label'
+  },
+  {
+    name: 'protocols',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of protocol types'
+  },
+  {
+    name: 'transports',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of transport types'
+  },
+  {
+    name: 'fsal',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'FSAL configuration'
+  },
+  {
+    name: 'clients',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of client configurations'
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'method',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'data',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'tracking_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R75A0Boftx200
+-------E------
+[
+  {
+    name: 'list_of_flags',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[
+  {
+    name: 'flags',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of flags to set. The flags `recovery_deletes`, `sortbitwise` and `pglog_hardlimit` cannot be unset. Additionally `purged_snapshots` cannot even be set.'
+  }
+]
+------S-------
+R75A1B4i5p200
+-------E------
+[
+  {
+    name: 'list_of_flags',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+------S-------
+R76A0B2mfc200
+-------E------
+[
+  {
+    name: 'osd',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'OSD ID'
+  },
+  {
+    name: 'flags',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of active flags'
+  }
+]
+[
+  {
+    name: 'flags',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'Directory of flags to set or unset. The flags `noin`, `noout`, `noup` and `nodown` are going to be considered only.'
+  },
+  {
+    name: 'ids',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: 'List of OSD ids the flags should be applied to.'
+  }
+]
+------S-------
+R76A1Bg37r200
+-------E------
+[
+  {
+    name: 'added',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of added flags'
+  },
+  {
+    name: 'removed',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of removed flags'
+  },
+  {
+    name: 'ids',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'List of updated OSDs'
+  }
+]
+[]
+[]
+[]
+[]
+------S-------
+R78A0Btoeg200
+-------E------
+[
+  {
+    name: 'safe_to_destroy',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Is OSD safe to destroy?'
+  },
+  {
+    name: 'active',
+    type: 'array',
+    typeItems: 'integer',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'missing_stats',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'stored_pgs',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Stored Pool groups in Osd'
+  },
+  {
+    name: 'is_safe_to_destroy',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Is OSD safe to destroy?'
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'device_class',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'action',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'weight',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'deep',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R89A0Br0hx200
+-------E------
+[
+  {
+    name: 'mon.a',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Service ID'
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R97A0Bey3p200
+-------E------
+[]
+[
+  {
+    name: 'pool',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'flags',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'application_metadata',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'configuration',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'bucket',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'uid',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'zonegroup',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'placement_target',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_enabled',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_retention_period_days',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_retention_period_years',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'bucket_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'uid',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'versioning_state',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mfa_delete',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mfa_token_serial',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mfa_token_pin',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_mode',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_retention_period_days',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'lock_retention_period_years',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R108A0Bsiiz200
+-------E------
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R111A0Bh0sb200
+-------E------
+[
+  {
+    name: 'list_of_users',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'list of rgw users'
+  }
+]
+[
+  {
+    name: 'uid',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'display_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'email',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'max_buckets',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'suspended',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'generate_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'access_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'secret_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'display_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'email',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'max_buckets',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'suspended',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'perm',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'key_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'subuser',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'generate_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'access_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'secret_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'quota_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'enabled',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'max_size_kb',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'max_objects',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'subuser',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'access',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'key_type',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'generate_secret',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'access_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'secret_key',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'daemon_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R119A0Bxdka200
+-------E------
+[]
+[
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'description',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'scopes_permissions',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'description',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'scopes_permissions',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'new_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'service_spec',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'service_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'service_spec',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R126A0Bgrjd200
+-------E------
+[]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'value',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[]
+------S-------
+R128A0Bsgsh200
+-------E------
+[
+  {
+    name: 'health_status',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mgr_id',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'mgr_host',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'have_mon_connection',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'executing_tasks',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'finished_tasks',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'version',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'rbd_mirroring',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+------S-------
+R129A0Bhnfp200
+-------E------
+[
+  {
+    name: 'executing_tasks',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'ongoing executing tasks'
+  },
+  {
+    name: 'finished_tasks',
+    type: 'array',
+    typeItems: 'object',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[
+  {
+    name: 'enable',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'license_name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+------S-------
+R131A0Bfe7l200
+-------E------
+[
+  {
+    name: 'report',
+    type: 'object',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'device_report',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+------S-------
+R132A0Bi9vi200
+-------E------
+[
+  {
+    name: 'username',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Username of the user'
+  },
+  {
+    name: 'roles',
+    type: 'array',
+    typeItems: 'string',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'User Roles'
+  },
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'User Name'
+  },
+  {
+    name: 'email',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'User email address'
+  },
+  {
+    name: 'lastUpdate',
+    type: 'integer',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Details last updated'
+  },
+  {
+    name: 'enabled',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Is the user enabled?'
+  },
+  {
+    name: 'pwdExpirationDate',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Password Expiration date'
+  },
+  {
+    name: 'pwdUpdateRequired',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: 'Is Password Update Required?'
+  }
+]
+[
+  {
+    name: 'username',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'email',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'roles',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'enabled',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pwdExpirationDate',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pwdUpdateRequired',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[
+  {
+    name: 'password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'username',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'old_password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'name',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'email',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'roles',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'enabled',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pwdExpirationDate',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  },
+  {
+    name: 'pwdUpdateRequired',
+    type: 'boolean',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: false,
+    description: ''
+  }
+]
+[]
+[]
+[]
+[]
+[]
+[
+  {
+    name: 'old_password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  },
+  {
+    name: 'new_password',
+    type: 'string',
+    typeItems: '',
+    enum: '',
+    format: '',
+    isEnum: false,
+    example: '',
+    required: true,
+    description: ''
+  }
+]
+[]
+[]
+{
+  name: 'R132A0Bi9vi200',
+  properties: [
+    {
+      name: 'username',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'Username of the user'
+    },
+    {
+      name: 'roles',
+      type: 'array',
+      typeItems: 'string',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'User Roles'
+    },
+    {
+      name: 'name',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'User Name'
+    },
+    {
+      name: 'email',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'User email address'
+    },
+    {
+      name: 'lastUpdate',
+      type: 'integer',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'Details last updated'
+    },
+    {
+      name: 'enabled',
+      type: 'boolean',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'Is the user enabled?'
+    },
+    {
+      name: 'pwdExpirationDate',
+      type: 'string',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'Password Expiration date'
+    },
+    {
+      name: 'pwdUpdateRequired',
+      type: 'boolean',
+      typeItems: '',
+      enum: '',
+      format: '',
+      isEnum: false,
+      example: '',
+      required: false,
+      description: 'Is Password Update Required?'
+    }
+  ]
+}

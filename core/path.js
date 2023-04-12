@@ -22,15 +22,16 @@ const rs = require('./responses');
 const prop = require('./properties');
 
 module.exports = {
-    getPaths
+    transformPaths
 };
 
 /**
  * Mapping path to be use as services
  * @param {*} api Api root
  */
-function getPaths(api, props, entities) {
+function transformPaths(api, props, entitiesFromResponse) {
     const paths = []
+    let i = 0
     if (api) Object.entries(api.paths).forEach(path => {
         let param = ''
         param = path[0] ? splitParam(path[0]) : ''
@@ -39,8 +40,9 @@ function getPaths(api, props, entities) {
           pathOrigin: path[0],
           path: param,
           hasParam: hasParam,
-          methods: getPathMethod(path[1], props, entities)
+          methods: getPathMethod(path[1], props, entitiesFromResponse, i)
         })
+        i++
     })
     return paths
 }
@@ -49,9 +51,9 @@ function getPaths(api, props, entities) {
  * Get Path method
  * @param {*} path path
  */
- function getPathMethod(path, props, entities) {
+ function getPathMethod(path, props, entitiesFromResponse, i) {
     const methods = []
-  
+    
     let index = 0
 
     if (path) Object.entries(path).forEach(method => {
@@ -105,15 +107,49 @@ function getPaths(api, props, entities) {
   
         /// Request Body -> All included
         /// requestBody.content
-        requestBody: _getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
+        requestBody: getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
   
         // Response
-        responses: rs.responses(m, props, index, entities)
+        responses: rs.transformResponses(m, props, index, entitiesFromResponse, i),
+
+        security: m.security? securityEachMethod(m.security) : []
       })
       index++
     })
-
   return methods
+}
+
+
+function securityEachMethod(security){
+  
+  let securityNew = []
+  security.forEach(sec => {
+    let secType = ''
+    let roles = []
+    Object.entries(sec).forEach(s => {
+      secType = s[0]
+      if(s[1] && s[1].length > 1){
+        s[1].forEach(r => {
+          roles.push(splitRoles(r))
+        })
+      }
+    })
+    securityNew.push({
+      type: secType,
+      roles: roles
+    })
+  })
+  return securityNew
+}
+
+function splitRoles(roles){
+  if(roles && roles.split(':').length > 1){
+    return {
+      role: roles[0],
+      object: roles[1],
+      origin: roles
+    }
+  } 
 }
 
 /**
@@ -125,8 +161,8 @@ function getPaths(api, props, entities) {
  * @param {*} properties 
  * @returns 
  */
-function _getRequestBody(requestBody, typeRequest, reqContentType, required, properties, props) {
-  const getprop = prop.getProperties(properties, required)
+function getRequestBody(requestBody, typeRequest, reqContentType, required, properties, props) {
+  const getprop = prop.transformProperties(properties, required)
 
   props.push(getprop)
 

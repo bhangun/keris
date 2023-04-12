@@ -21,6 +21,7 @@ const GenBase = require('../core');
 const utils = require('../core/utils');
 const _ = require('lodash');
 const fs = require('fs')
+//const Buffer = require('buffer')
 const trans = require('../core/transformer')
 
 
@@ -38,211 +39,23 @@ const API02R = '../api_sample/api/api02_result.json'
 const API02Y = '../api_sample/api/api02.yaml'
 const API6 = '../api_sample/ceph-oas3.json'
 
-const tes = class extends GenBase {
-
-    constructor(args, opts) {
-        super(args, opts);
-        this.appsName = 'testing'
-        this.props = opts
-    }
-}
-
-
-function writingEntity2() {
-    utils.transformApi(this.appsName, API5, (api) => {
-        this.props = api
-        // console.log(this.props.entities[6].entityClass)
-        console.log(JSON.stringify(this.props))
-        console.log(this.props.paths[0].methods)
-        for (const i in this.props.paths) {
-            for (const m in this.props.paths[i].methods) {
-                const path = this.props.paths[i].path;
-                const requestType = this.props.paths[i].methods[m].requestBodyType;
-                /* const requestClass = capitalize(requestType);
-                const requestBodyClass = capitalize(requestType); 
-                const responseClass = (this.props.paths[i].methods[m].responseType)?capitalize(this.props.paths[i].methods[m].responseType):capitalize(this.props.paths[i].methods[m].tags[0]); 
-                const methodName = this.props.paths[i].methods[m].operationId;
-                const isInput = requestType?true:false;
-                const methodPath = validatePath(this.props.paths[i].methods[m].method);
-                const desc = this.props.paths[i].methods[m].description; 
-                const summary = this.props.paths[i].methods[m].summary;
-                const param =  putParam(this.props.paths[i].methods[m]);
-                const parameters = param.param;
-                const query = param.query; */
-
-                let payload = '';
-                let payloadStatement = '';
-                /* if(methodPath == 'post' || methodPath == 'update'){
-                  payload = ', '+param.payload;
-                  payloadStatement = param.payloadStatement;
-                } */
-
-                console.log(path)
-                console.log(requestType)
-            }
-        }
-
-    })
-}
-
-function writingJson(path) {
-
-    utils.transformApi('test1', path, (api, origin) => {
-       // this.fs.writeJSON(path + '/.kujang.json', api)
-        this.writeKujangJson('tes1',api)
-       // utils.writeOriginJson('test1',origin)
-    })
-
-    /* utils.transformApi(this.appsName, API5, (api) => {
-        this.props = api
-
-    }) */
-}
-
-function cobaArray() {
-    const aa = [
-        { nama: 'a', usia: 9 },
-        { nama: [{ a: 'a' }], usia: 8 },
-        { nama: [{ a: 'a' }], usia: 8 },
-        { nama: 'a', usia: 8, bbb: 'as' }
-    ]
-    const bb = [{ nama: 'a', usia: 8 }, { nama: 'a', usia: 8 }, { nama: 'a', usia: 8 }, { nama: 'a', usia: 8, bbb: 'as' }]
-
-    //console.log(aa.equal(bb))
-    aa.reduce((prev, curr) => {
-        //if(prev === curr) return curr
-        //console.log(prev)
-        console.log(curr['nama'])
-        //console.log(prev === curr)
-    })
-
-}
-
-const coba = [
-    {
-      name: 'title',
-      type: 'string',
-      enum: '',
-      format: '',
-      isEnum: false,
-      example: '',
-      required: false
-    },
-    {
-      name: 'category',
-      type: 'string',
-      enum: '',
-      format: '',
-      isEnum: false,
-      example: '',
-      required: false
-    },
-    {
-      name: 'price',
-      type: 'string',
-      enum: '',
-      format: '',
-      isEnum: false,
-      example: '',
-      required: false
-    },
-    {
-      name: '_id',
-      type: 'string',
-      enum: '',
-      format: '',
-      isEnum: false,
-      example: '',
-      required: false
-    }
-  ]
-
 
 function testArray(_path) {
-
+    const data = {}
     trans.transformApi('myname', _path, (api) => {
         this.props = api
-
-        // utils.writingJson(api)
-        const com = _.compact(api.paths)
-
-        //console.log(api.paths)
-        
-       // console.log(com)
-        //const arr = api
-        //const arr2 = utils.uniqProperties(api.properties)
-       /*  const arr3 = _.filter(api.properties, (p)=>{
-             return _.map( arr2, p)   
-        }) */
-
-        //const arr4 = _.filter(arr,(a)=>{console.log(a.length)})
-
-        
-
-
-       /*  const arr5 = _.filter(arr2,(a)=>{
-            console.log(a.length)
-            return a.length <6})
-*/
-
-        /* const arr6 = _.filter(arr2,(a,i)=>{
-            //console.log(coba)
-            console.log(i)
-                return _.isEqual(a, coba)
-            }) 
-
-
-
-                console.log(arr6)
-       // const aa = utils.uniqProperties(api.properties)
-        //console.log(aa)
-        //console.log(utils.findEqualObject(api.properties, coba))
-        //console.log(arr2.length)
-
-       /*  fs.writeFile('props.json', JSON.stringify(arr2), (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-        }) */
-        //console.log(api.properties)
-
-       /*  fs.writeFile('origin.json', JSON.stringify(api), (err) => {
-            if (err) throw err;
-            console.log('The file has been saved!');
-        }) 
-*/
+        writeFile(JSON.stringify(api),'test/coba4.json')
     }) 
 }
 
+function writeFile(rawData, name){
+  //const data =  new Uint8Array(Buffer(dataIn));
+  //const data = Buffer.alloc(Buffer.byteLength(rawData, 'utf8'), rawData, 'utf8');
+  fs.writeFileSync(name? name: '', rawData, function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+}
 
-
-//testArray(API4)
-testArray(API6)
-console.log('asd-._@$%^&*()+=|}{[];:<>,?/342asd'.replace(/[^a-z0-9]/gi,''))
-console.log('asd-._@$%^&*()+=|}{[];:<>,?/asd'.replace(/[$._?\s]/g,'p'))
-//writingJson(API6)
-//cobaArray()
-//writingEntity()
-//writingEntity2()
-
-
- /* Object.entries(api.paths).forEach(path => {
-      Object.entries(path[1]).forEach(met => {
-       // console.log(met)
-        Object.entries(met[1].responses).forEach(res => {
-        // console.log(res)
-          Object.entries(res[1]).forEach(code => {
-            
-            console.log(code)
-            Object.entries(code[1]).forEach(cont => {
-              if(cont[1].type){
-                //console.log(cont[1])
-                Object.entries(cont[1]).forEach(c => {
-                  //path.responses.forEach(res => {
-                  console.log( c[1])
-                })
-              }
-            }) 
-          }) 
-       })
-      })
-    }) */
+// testArray(API4) // Pet
+testArray(API6) // Ceph

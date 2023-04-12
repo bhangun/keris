@@ -37,7 +37,7 @@ function parse(typeOrigin, lang) {
     let _comp = ''
 
     if(typeOrigin.items && typeOrigin.items.$ref)
-        _comp = _.capitalize(type.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+        _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
   
     newType.origin = typeOrigin.type? typeOrigin.type: _comp
     newType.example = typeOrigin.example ? typeOrigin.example : ''
