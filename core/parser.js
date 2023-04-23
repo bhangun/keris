@@ -25,8 +25,7 @@ module.exports = {
 
 /**
  * 
- * @param {*} type 
- * @param {*} enumValue 
+ * @param {*} typeOrigin
  * @param {*} lang 
  * @returns 
  */

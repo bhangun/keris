@@ -56,7 +56,9 @@ function transformPaths(api, props, entitiesFromResponse) {
     
     let index = 0
 
-    if (path) Object.entries(path).forEach(method => {
+    if (path) Object.entries(path)
+      .filter(e => ['get', 'post', 'put', 'delete'].includes(e.key))
+      .forEach(method => {
       const m = method[1];
       const reqContentType = []
       let typeRequest = ''
