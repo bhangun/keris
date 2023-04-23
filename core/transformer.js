@@ -231,7 +231,7 @@ function mappingServices(paths, api, lang, properties) {
     const services = []
     for (const i in paths) {
       for (const m in paths[i].methods) {
-        const tag = paths[i].methods[m].tags[0]
+        const tag = paths[i].methods[m].tags ? paths[i].methods[m].tags[0] : []
         const serviceName = ('serv'+i+tag+m).replace(/[^a-z0-9]/gi,'');
       
         let externalDoc = ''
