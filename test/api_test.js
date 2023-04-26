@@ -17,45 +17,51 @@
  * limitations under the License.
  */
 
-const GenBase = require('../core');
+/* const GenBase = require('../core');
 const utils = require('../core/utils');
-const _ = require('lodash');
+*/
+const _ = require('lodash'); 
 const fs = require('fs')
-//const Buffer = require('buffer')
 const trans = require('../core/transformer')
 
 
-const API2 = 'https://petstore.swagger.io/v2/swagger.json'
-const API3 = 'https://petstore3.swagger.io/api/v3/openapi.json'
-const API4 = '../api_sample/pet-oas3.json'
-const API5 = '../api_sample/api02.yaml'
+// const API2 = 'https://petstore.swagger.io/v2/swagger.json'
 
-const API01J = '../api_sample/api/api01.json'
-const API01Y = '../api_sample/api/api01.yaml'
-const API01R = '../api_sample/api/api01_result.json'
-
-const API02J = '../api_sample/api/api02.json'
-const API02R = '../api_sample/api/api02_result.json'
-const API02Y = '../api_sample/api/api02.yaml'
-const API6 = '../api_sample/ceph-oas3.json'
+/* process.argv.forEach(function (val, index, array) {
+  console.log(index + ': ' + val+ '');
+}); */
 
 
-function testArray(_path) {
-    const data = {}
-    trans.transformApi('myname', _path, (api) => {
+function testAPI(arg) {
+  let path = 'https://petstore3.swagger.io/api/v3/openapi.json'
+  switch (arg) {
+    case 'ceph':
+      path = '../api_sample/ceph-oas3.json'
+      break;
+    case 'shopify':
+      path = '../api_sample/shopify-oas3.json'
+      break;
+    default:
+      path = '../api_sample/pet-oas3.json'
+      break;
+  }
+
+    trans.transformApi('myname', path, (api) => {
         this.props = api
         writeFile(JSON.stringify(api),'test/coba4.json')
     }) 
 }
 
 function writeFile(rawData, name){
-  //const data =  new Uint8Array(Buffer(dataIn));
-  //const data = Buffer.alloc(Buffer.byteLength(rawData, 'utf8'), rawData, 'utf8');
   fs.writeFileSync(name? name: '', rawData, function (err) {
     if (err) throw err;
     console.log('Saved!');
   });
 }
 
-// testArray(API4) // Pet
-testArray(API6) // Ceph
+console.log('------Start--------')
+//const text = '{name}/api/service/{serv_name}/daemons/{servi_ss}'
+//console.log(text.match(/(?<=\{).+?(?=\})/g))
+
+testAPI(process.argv[2])
+console.log('------Finish--------')

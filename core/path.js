@@ -29,18 +29,19 @@ module.exports = {
  * Mapping path to be use as services
  * @param {*} api Api root
  */
-function transformPaths(api, props, entitiesFromResponse) {
+function transformPaths(api, props, entitiesFromResponse, entitiesFromRequest) {
     const paths = []
     let i = 0
     if (api) Object.entries(api.paths).forEach(path => {
         let param = ''
         param = path[0] ? splitParam(path[0]) : ''
+
         const hasParam = path[0].split('{').length > 1
         paths.push({
           pathOrigin: path[0],
           path: param,
           hasParam: hasParam,
-          methods: getPathMethod(path[1], props, entitiesFromResponse, i)
+          methods: getPathMethod(path[1], props, entitiesFromResponse, i, entitiesFromRequest)
         })
         i++
     })
@@ -51,7 +52,7 @@ function transformPaths(api, props, entitiesFromResponse) {
  * Get Path method
  * @param {*} path path
  */
- function getPathMethod(path, props, entitiesFromResponse, i) {
+ function getPathMethod(path, props, entitiesFromResponse, i, entitiesFromRequest) {
     const methods = []
     
     let index = 0
@@ -107,8 +108,10 @@ function transformPaths(api, props, entitiesFromResponse) {
   
         /// Request Body -> All included
         /// requestBody.content
-        requestBody: getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
-  
+        //requestBody: getRequestBody(m.requestBody, typeRequest, reqContentType, required, _properties, props),
+        
+        requestBody: rs.transformContentType(m.requestBody.content),
+
         // Response
         responses: rs.transformResponses(m, props, index, entitiesFromResponse, i),
 
@@ -116,6 +119,9 @@ function transformPaths(api, props, entitiesFromResponse) {
       })
       index++
     })
+
+  console.log(methods)
+  
   return methods
 }
 

@@ -22,16 +22,48 @@ const prop = require('./properties');
 
 module.exports = {
   transformResponses,
+  transformContentType,
+  transformContentTypeDetail,
   getResponseType
 };
 
+
+function getResponseType(responses, properties) {
+
+  let responseType = 'void'
+  // RESPONSE
+  const _responses = responses;
+  const code200 = _responses.find(e => e.code.slice(0,1) == 2) //'200' ||  e.code == '201')
+  const responseContent = code200 ? code200 : {}
+  let hasResponse = false
+
+  if (responseContent) {
+    if (responseContent.hasComponent){
+      responseType = responseContent.name
+      hasResponse =  true
+    }
+    else if(responseContent.properties && responseContent.properties.length >0 ){
+      //responseType = findEqualObject(responseContent.properties, properties).name
+      //responseType = _.capitalize(responseContent.content.items.type + '' + i)
+      responseType = findEqualObject(responseContent.properties, properties).name
+      responseType = responseContent.name
+      hasResponse = true
+    } 
+  } else responseType = 'UnknownObject'
+
+  return {
+    hasResponse: hasResponse,
+    responseType: responseType,
+    isResponseCompArray: responseContent.isResponseCompArray
+  }
+}
 
 /**
  * Mapping responses
  * @param {*} list 
  * @returns 
  */
-function transformResponses(list, props, index, entities, i) {
+function transformResponses(list, props, index, entitiesFromResponse, i) {
     const responses = []
     if (list)
         Object.entries(list.responses).forEach(r => {
@@ -40,7 +72,7 @@ function transformResponses(list, props, index, entities, i) {
           const responseCode = r[0]
           const name = 'R'+i+'A'+index+'B'+Math.random().toString(36).slice(-4)+responseCode
 
-          const content = r[1].content ? transformResponseContentType(r[1].content, props, name) : []
+          const content = r[1].content ? transformContentType(r[1].content, entitiesFromResponse, name) : []
 
           if (r[1].headers){
             Object.entries(r[1].headers).forEach(c => {
@@ -49,13 +81,11 @@ function transformResponses(list, props, index, entities, i) {
           }
 
           if(content.properties && content.properties.length > 0) {
-            entities.push({
+            entitiesFromResponse.push({
               name: name,
               properties: content.properties
             })
           }
-
-          
 
           responses.properties= content.properties
           responses.object= content.object
@@ -68,14 +98,16 @@ function transformResponses(list, props, index, entities, i) {
 
               hasComponent: content.component? true : false,
 
-              isComponentArray: content.isComponentArray,
+              isResponseCompArray: content.isResponseCompArray,
 
               /// responses.<responseCode>.description
               description: r[1].description ? r[1].description : '',
 
               content: content.content,
+
               /// responses.<responseCode>.content
               contentType: content.contentType,
+
               // component: content.component,
               required: content.required,
       
@@ -93,21 +125,24 @@ function transformResponses(list, props, index, entities, i) {
  * @param {*} contentType 
  * @returns 
  */
-function transformResponseContentType(content, props, parentEntityName) {
+function transformContentType(content, entitiesFromResponse, parentEntityName) {
   const listContent = []
   let compName = ''
-  let isComponentArray = false
+  let isResponseCompArray = false
+  let properties = {}
   if (content) Object.entries(content).forEach(c => {
-    const contentItem = transformResponseContentTypeDetail(c, props, parentEntityName)
+    const contentItem = transformContentTypeDetail(c, entitiesFromResponse, parentEntityName)
     compName = contentItem ? contentItem.component : ''
-    isComponentArray = contentItem.isComponentArray
+    isResponseCompArray = contentItem.isResponseCompArray
     listContent.push(contentItem)
+    properties = contentItem.properties
   })
 
   return {
     content: listContent,
     component: compName,
-    isComponentArray: isComponentArray
+    isResponseCompArray: isResponseCompArray,
+    properties: properties
   }
 }
 
@@ -118,14 +153,15 @@ function transformResponseContentType(content, props, parentEntityName) {
  * @param {*} contentType 
  * @returns 
  */
-function transformResponseContentTypeDetail(c, props, parentEntityName) {
+function transformContentTypeDetail(c, entitiesFromResponse, parentEntityName) {
     let contentType = ''
-    let _props = []
+    let localProperties = []
     let componentName = ''
     let req = []
-    let items = {}
+    //let items = {}
     let compName = ''
-    let isComponentArray = false
+    let isResponseCompArray = false
+    let responseContentTypeDetail = {}
  
     /// responses.<responseCode>.content.<contentType>
     contentType = c[0]
@@ -139,7 +175,7 @@ function transformResponseContentTypeDetail(c, props, parentEntityName) {
       }
 
       if(c[1].schema.type == 'array'){
-        isComponentArray = true
+        isResponseCompArray = true
         if(c[1].schema.items) {
           componentName = c[1].schema.items.$ref? c[1].schema.items.$ref.split(RegExp(`^#/components/schemas/`))[1]:''
         }
@@ -151,33 +187,43 @@ function transformResponseContentTypeDetail(c, props, parentEntityName) {
       }
 
       /// responses.<responseCode>.content.schema.xml.name
-      if(c[1].schema.xml)
+      if(c[1].schema.xml){
         componentName =  c[1].schema.xml.name 
-      else component
+        compName = _.capitalize(componentName)
+      } else {
+        compName = component
+      }
 
       /// responses.<responseCode>.content.schema.required
       req = c[1].schema.required
   
       /// responses.<responseCode>.content.schema.properties
-      _props = c[1].schema.properties
+      localProperties = c[1].schema.properties
 
       /// responses.<responseCode>.content.schema.items
-      //items.type = c[1].schema.items ? c[1].schema.items.type : ''
-      items = transformItems(c[1].schema.items, parentEntityName+'I')
-      //items.properties = c[1].schema.items ? prop.transformProperties(c[1].schema.items.properties, []) : []
+      const itemsProperties = transformItems(c[1].schema.items, parentEntityName+'I')
+      
+      if(itemsProperties && itemsProperties.name){
+        compName = itemsProperties.name
+        entitiesFromResponse.push(itemsProperties)
+      }
+
+      
     }
 
-    compName = _.capitalize(componentName)
 
-    return {
+    responseContentTypeDetail = {
         contentType: contentType,
         component: compName,
-        isComponentArray : isComponentArray,
+        isResponseCompArray : isResponseCompArray,
         required: req,
         
-        properties: prop.transformProperties(_props, []),
-        object: items
+        properties: prop.transformProperties(localProperties, []),
+
+        //object: items
     }
+
+    return responseContentTypeDetail
 }
 
 function transformItems(items, parentEntityName){
@@ -188,37 +234,6 @@ function transformItems(items, parentEntityName){
       properties: items.properties? prop.transformProperties(items.properties, []) : [],
     }
   } else return {}
-}
-
-
-function getResponseType(responses, properties) {
-
-   let responseType = 'void'
-   // RESPONSE
-   const _responses = responses;
-   const code200 = _responses.find(e => e.code.slice(0,1) == 2) //'200' ||  e.code == '201')
-   const responseContent = code200 ? code200 : {}
-   let hasResponse = false
- 
-   if (responseContent) {
-     if (responseContent.hasComponent){
-       responseType = responseContent.name
-       hasResponse =  true
-     }
-     else if(responseContent.properties && responseContent.properties.length >0 ){
-       //responseType = findEqualObject(responseContent.properties, properties).name
-       //responseType = _.capitalize(responseContent.content.items.type + '' + i)
-       responseType = findEqualObject(responseContent.properties, properties).name
-       responseType = responseContent.name
-       hasResponse = true
-     } 
-   } else responseType = 'UnknownObject'
-
-   return {
-     hasResponse: hasResponse,
-     responseType: responseType,
-     isComponentArray: responseContent.isComponentArray
-   }
 }
 
 /**

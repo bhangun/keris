@@ -54,12 +54,13 @@ module.exports = {
  */
 function payloadKeris(api, appsName) {
     const props = []
+    const entitiesFromRequest = []
     const entitiesFromResponse = []
     const uniqprop =  utils.uniqProperties(props)
     const properties = uniqprop? uniqprop :[]
-    const paths = path.transformPaths(api, props, entitiesFromResponse)
+    const paths = path.transformPaths(api, props, entitiesFromResponse, entitiesFromRequest)
     const services = mappingServices(paths, api, 'dart', properties )
-    const entities = mappingEntities(appsName, api, entitiesFromResponse)
+    const entities = mappingEntities(appsName, api, entitiesFromResponse, entitiesFromRequest)
     
 
     const schema =  {
@@ -243,7 +244,7 @@ function mappingServices(paths, api, lang, properties) {
         // PARAMETER
         const param = transformParam(paths[i].methods[m], responseType, lang);
 
-        const method = _transMethod(paths[i].methods[m].method, param);
+        const method = transformMethod(paths[i].methods[m].method, param);
         
         const parameters = param.param;
         const query = param.query;
@@ -265,8 +266,9 @@ function mappingServices(paths, api, lang, properties) {
             desc: paths[i].methods[m].description ? paths[i].methods[m].description : description,
             responseType: responseType,
             hasResponse: response.hasResponse,
-            isComponentArray: response.isComponentArray,
+            isResponseCompArray: response.isResponseCompArray,
             parametersString: parameters,
+            parameterItems: param.paramItems,
             query: query,
             requestPayload: method.payload,
             requestPayloadStatement: method.payloadStatement,
@@ -278,7 +280,7 @@ function mappingServices(paths, api, lang, properties) {
             tag: tag,
             externalDoc : externalDoc,
             operationId: optId ? optId : serviceName,
-            requestBody: paths[i].methods[m].requestBody,
+            requestBody: paths[i].methods[m].requestBody.content,
             responses: paths[i].methods[m].responses
         })
       }
@@ -294,199 +296,234 @@ function mappingServices(paths, api, lang, properties) {
  * @returns 
  */
 function transformParam(input, resType, lang) {
+  let result = {}
+  let paramType = '';
+  let param = {}
+  let isProp = false
+  let onlyParam = ''
+  let dartParam = ''
+  let jsonParam = ''
+  let query = ''
+  let payloadStatement = 'const ' + resType? resType.toLowerCase() : '' + ' = ' + resType + '(';
 
-    let _param = '';
-    let param = {}
-    let isProp = false
-    let onlyParam = ''
-    let dartParam = ''
-    let jsonParam = ''
-    let query = ''
-    let payloadStatement = 'const ' + resType?resType.toLowerCase():'' + ' = ' + resType + '(';
-  
-    if (input.parameters)
-      param = input.parameters
-    else {
-      param = input.requestBody.properties;
-      isProp = true
-    }
-  
-    if (param) {
-  
-      let req = ''
-      let n = param.length
-      let comma = ''
-      let and = '';
-      let q = 0;
-  
-      if (param.required)
-        req = '@required '
-  
-      for (const p in param) {
-  
-        const _type = isProp ? parser.parse(param[p], lang).type : parser.parse(param[p].schema, lang).type
-  
-        _param += comma + req + _type + '? ' + param[p].name;
-  
-        onlyParam += comma + param[p].name
-  
-        dartParam += comma + param[p].name + ': ' + param[p].name;
-  
-        jsonParam += comma + '"'+param[p].name + '": '+ isString(_type, param[p].name);
-  
-        if (q > 0)
-          and = '%26'
-  
-        if (param[p].in == 'query') {
-          query += and + param[p].name + '=$' + param[p].name
-          q++;
-        }
-        n--;
-  
-        if (n > 0)
-          comma = ', '
+  let newParameters = []
+
+
+  if (input.parameters){
+    param = input.parameters
+  }
+  else {
+    param = input.requestBody.properties;
+    isProp = true
+  }
+
+  if (param) {
+
+    let required = ''
+    let n = param.length
+    let comma = ''
+    let andDelimeter = '';
+    let queryIndex = 0;
+
+    if (param.required)
+    required = '@required '
+
+    for (const p in param) {
+
+      const paramName = param[p].name 
+
+      const _type = isProp ? parser.parse(param[p], lang).type : parser.parse(param[p].schema, lang).type
+
+      paramType += comma + required + _type + '? ' + paramName;
+
+      //paramType += tranformParamType(param[p], paramName, required, isProp, comma, lang)
+
+      onlyParam += comma + paramName
+
+      dartParam += comma + paramName + ': ' + paramName;
+
+      jsonParam += comma + '"'+paramName + '": '+ isString(_type, paramName);
+
+      query = transformQuery(param[p], paramName, andDelimeter, queryIndex)
+
+      n--;
+
+      if (n > 0){
+        comma = ', '
       }
+
+  
+      newParameters.push({
+        name : param[p].name,
+        in: param[p].in,
+        description: param[p].description,
+        required: param[p].required,
+        type: _type,
+        isTypeArray: param[p].schema && param[p].schema.type == 'array' ? true: false,
+        originType: param[p].schema
+      })
     }
-  
-    // add parameter if there is payload
-    if (resType !== 'void') {
-      payloadStatement += onlyParam + ');'
-    }
-  
-    if (query)
-      query = '?' + query
-  
-    return {
-      param: _param,
-      query: query,
-      payload: resType.toLowerCase(),
-      payloadStatement: payloadStatement,
-      onlyParam: onlyParam,
-      dartParam: dartParam,
-      jsonParam: jsonParam
-    };
+  }
+
+  // add parameter if there is payload
+  if (resType !== 'void') {
+    payloadStatement += onlyParam + ');'
+  }
+
+  if (query)
+    query = '?' + query
+
+  result = {
+    param: paramType,
+    paramItems: newParameters,
+    query: query,
+    payload: resType.toLowerCase(),
+    payloadStatement: payloadStatement,
+    onlyParam: onlyParam,
+    dartParam: dartParam,
+    jsonParam: jsonParam
+  };
+  return result
 }
 
+/* function tranformParamType(paramItem, paramName, required, isProp, comma, lang){
+  let paramType = ''
+  const _type = isProp ? parser.parse(paramItem, lang).type : parser.parse(paramItem.schema, lang).type
+
+  paramType = comma + required + _type + '? ' + paramName;
+
+  return paramType
+} */
+
+function transformQuery(paramItem, paramName, andDelimeter, queryIndex){
+  let query = ''
+  if (queryIndex > 0)
+    andDelimeter = '%26'
+  if (paramItem.in == 'query') {
+    query += andDelimeter + paramName + '=$' + paramName
+    queryIndex++;
+  }
+  return query
+}
   
   
-  
-function isString(type,param){
+function isString(type, param){
     if(type ==='String' || type ==='string')
-      return '"${'+param+'}"'
+      return '"$'+param+'"'
     else
       return param
+}
+  
+/**
+ * 
+ * @param {*} m 
+ * @returns 
+ */
+function transformMethod(m, param) {
+
+  let method = m;
+  let payload = '';
+  let payloadStatement = '';
+  let onlyParam = ''
+  let jsonParam = ''
+
+  if (m == 'put')
+    method = 'update';
+  else if (m == 'get')
+    method = 'fetch';
+
+
+  if (m == 'post' || m == 'update' || method === 'update') {
+    payload = ', ' + param.payload;
+    payloadStatement = param.payloadStatement
+    onlyParam = param.onlyParam
+    jsonParam = ', json.encode({'+param.jsonParam+'})'
   }
+
+  return {
+    method: method,
+    payload: payload,
+    payloadStatement: payloadStatement,
+    onlyParam: onlyParam,
+    jsonParam: jsonParam
+  };
+}
   
-  /**
-   * 
-   * @param {*} m 
-   * @returns 
-   */
-  function _transMethod(m, param) {
-  
-    let method = m;
-    let payload = '';
-    let payloadStatement = '';
-    let onlyParam = ''
-    let jsonParam = ''
-  
-    if (m == 'put')
-      method = 'update';
-    else if (m == 'get')
-      method = 'fetch';
-  
-  
-    if (m == 'post' || m == 'update' || method === 'update') {
-      payload = ', ' + param.payload;
-      payloadStatement = param.payloadStatement
-      onlyParam = param.onlyParam
-      jsonParam = ', json.encode({'+param.jsonParam+'})'
-    }
-  
-    return {
-      method: method,
-      payload: payload,
-      payloadStatement: payloadStatement,
-      onlyParam: onlyParam,
-      jsonParam: jsonParam
-    };
-  }
-  
-  /**
-   * 
-   * @param {*} paths 
-   * @returns 
-   */
-  function otherEntity(paths) {
-    const responseTypes = [];
-    for (const i in paths) {
-      for (const m in paths[i].methods) {
-        let responseType = ''
-        // RESPONSE
-        const responses = paths[i].methods[m].responses;
-        const code200 = responses.find(e => e.code == '200')
-        const responseContent = code200 ? code200 : {}
-  
-        if (responseContent.content.component)
-          responseType = responseContent.content.component
-        else if (responseContent.content.items.type)
-          responseType = _.capitalize(responseContent.content.items.type + '' + i)
-        else responseType = 'Object' + i
-        
-  
-        responseTypes.push(
-          {
-            "appsName": responseType,
-            "pkType": "String",
-            "relationships": [],
-            "entityName": _.capitalize(responseType),
-            "entityClass": _.capitalize(responseType),
-            "entityInstance": responseType,
-            "entityFolderName": responseType,
-            "entityFileName": responseType,
-            "enableTranslation": false,
-            "fields": otherFields(paths[i].methods[m])
-          }
-        )
-      }
-    }
-    return responseTypes
-  }
-  
-  /**
-   * 
-   * @param {*} input 
-   * @returns 
-   */
-  function otherFields(input) {
-    let param = {}
-    const fields = []
-    let isProp = false
-  
-    if (input.parameters)
-      param = input.parameters
-    else {
-      param = input.requestBody.properties;
-      isProp = true
-    }
-  
-    for (const p in param) {
-      fields.push(
+/**
+ * 
+ * @param {*} paths 
+ * @returns 
+ */
+function otherEntity(paths) {
+  const responseTypes = [];
+  for (const i in paths) {
+    for (const m in paths[i].methods) {
+      let responseType = ''
+      // RESPONSE
+      const responses = paths[i].methods[m].responses;
+      const code200 = responses.find(e => e.code == '200')
+      const responseContent = code200 ? code200 : {}
+
+      if (responseContent.content.component)
+        responseType = responseContent.content.component
+      else if (responseContent.content.items.type)
+        responseType = _.capitalize(responseContent.content.items.type + '' + i)
+      else responseType = 'Object' + i
+      
+
+      responseTypes.push(
         {
-          "fieldType": parser.parse(isProp ? param[p] : param[p].schema.type, false), //isProp ? param[p].type : param[p].schema.type, //
-          "fieldName": param[p].name,
-          "fieldIsEnum": false,
-          "fieldValues": "",
-          "fieldsContainOneToMany": false,
-          "fieldsContainOwnerManyToMany": false,
-          "fieldsContainOwnerOneToOne": false,
-          "fieldsContainNoOwnerOneToOne": false,
-          "fieldsContainManyToOne": false
+          "appsName": responseType,
+          "pkType": "String",
+          "relationships": [],
+          "entityName": _.capitalize(responseType),
+          "entityClass": _.capitalize(responseType),
+          "entityInstance": responseType,
+          "entityFolderName": responseType,
+          "entityFileName": responseType,
+          "enableTranslation": false,
+          "fields": otherFields(paths[i].methods[m])
         }
       )
     }
-    return fields
   }
+  return responseTypes
+}
+
+/**
+ * 
+ * @param {*} input 
+ * @returns 
+ */
+function otherFields(input) {
+  let param = {}
+  const fields = []
+  let isProp = false
+
+  if (input.parameters)
+    param = input.parameters
+  else {
+    param = input.requestBody.properties;
+    isProp = true
+  }
+
+  for (const p in param) {
+    fields.push(
+      {
+        "fieldType": parser.parse(isProp ? param[p] : param[p].schema.type, false), //isProp ? param[p].type : param[p].schema.type, //
+        "fieldName": param[p].name,
+        "fieldIsEnum": false,
+        "fieldValues": "",
+        "fieldsContainOneToMany": false,
+        "fieldsContainOwnerManyToMany": false,
+        "fieldsContainOwnerOneToOne": false,
+        "fieldsContainNoOwnerOneToOne": false,
+        "fieldsContainManyToOne": false
+      }
+    )
+  }
+  return fields
+}
   
   /**
    * entityFromProperties from properties
@@ -554,12 +591,12 @@ function isString(type,param){
     return schema
   }
   
-  /**
-   * 
-   * @param {*} type 
-   * @param {*} lang 
-   * @returns 
-   */
-  function transformType(type, lang) {
-    parser.parse(type, lang)
-  }
+/**
+ * 
+ * @param {*} type 
+ * @param {*} lang 
+ * @returns 
+ */
+function transformType(type, lang) {
+  parser.parse(type, lang)
+}

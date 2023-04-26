@@ -30,79 +30,328 @@ module.exports = {
  * @param {*} lang 
  * @returns 
  */
-function parse(typeOrigin, lang) {
-  
-    lang
-    let newType = {}
-    let _comp = ''
-
-    if(typeOrigin.items && typeOrigin.items.$ref)
-        _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
-  
-    newType.origin = typeOrigin.type? typeOrigin.type: _comp
-    newType.example = typeOrigin.example ? typeOrigin.example : ''
-    newType.description = typeOrigin.description ? typeOrigin.description : ''
-    newType.type = 'String'
-    newType.typeDesc = ''
-  
-  
-    switch (typeOrigin.type) {
-      case 'integer':
-        if (typeOrigin.format == 'int64')
-          newType.type = 'double'
-        else if (typeOrigin.format == 'int32')
-          newType.type = 'int'
-        break;
-      case 'number':
-        if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
-          newType.type = 'double'
-       // else if (type.format == 'double')
-        //  newType.type = 'double'
-        break;
-      case 'string':
-        switch (typeOrigin.format) {
-          case 'byte':
-            newType.type = 'ByteData'
-            break;
-          case 'binary':
-            newType.type = 'BinaryCodec'
-            break;
-          case 'date':
-            newType.type = 'DateTime'
-            break;
-          case 'date-time':
-            newType.type = 'DateTime'
-            break;
-          case 'password':
-          default:
-            newType.type = 'String'
-            break;
-        }
-        break;
-      case (typeOrigin == 'Instant'):
-        newType.type = 'int'
-        newType.typeDesc = '.toIso8601String()' + 'Z'
-        break
-      case 'array':
-        if(_comp)
-          newType.type = 'List<'+_comp+'>'
-        else 
-          newType.type = 'List'
-        break;
-      case 'uuid':
-        newType.type = 'String'
-        break;
-      case 'object':
-        if(_comp)
-          newType.type = _comp
-        else if(newType.type == typeOrigin.xml)
-          newType.type =  _.capitalize(typeOrigin.xml.name)
-        else 
-          newType.type = 'Object'
-        break;
-    }
-  
-    if (typeOrigin.isEnum) newType.type = 'String'
-
-    return newType
+function parse(typeOrigin, lang, enumValue) {
+  let result = {}
+  switch (lang) {
+    case 'java':
+      result = javaParser(typeOrigin, lang, enumValue)
+      break;
+    case 'js':
+      result = jsParser(typeOrigin, lang, enumValue)
+      break;
+    case 'php':
+      result = phpParser(typeOrigin, lang, enumValue)
+      break;
+    default:
+      result = dartParser(typeOrigin, lang, enumValue)
+      break;
   }
+  return result
+}
+
+
+function dartParser(typeOrigin, enumValue) {
+  enumValue
+  let newType = {}
+  let _comp = ''
+
+  if(typeOrigin.items && typeOrigin.items.$ref)
+      _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+
+  newType.origin = typeOrigin.type? typeOrigin.type: _comp
+  newType.example = typeOrigin.example ? typeOrigin.example : ''
+  newType.description = typeOrigin.description ? typeOrigin.description : ''
+  newType.type = 'String'
+  newType.typeDesc = ''
+
+
+  switch (typeOrigin.type) {
+    case 'integer':
+      if (typeOrigin.format == 'int64')
+        newType.type = 'double'
+      else if (typeOrigin.format == 'int32')
+        newType.type = 'int'
+      break;
+    case 'number':
+      if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
+        newType.type = 'double'
+      // else if (type.format == 'double')
+      //  newType.type = 'double'
+      break;
+    case 'string':
+      switch (typeOrigin.format) {
+        case 'byte':
+          newType.type = 'ByteData'
+          break;
+        case 'binary':
+          newType.type = 'BinaryCodec'
+          break;
+        case 'date':
+          newType.type = 'DateTime'
+          break;
+        case 'date-time':
+          newType.type = 'DateTime'
+          break;
+        case 'password':
+        default:
+          newType.type = 'String'
+          break;
+      }
+      break;
+    case (typeOrigin == 'Instant'):
+      newType.type = 'int'
+      newType.typeDesc = '.toIso8601String()' + 'Z'
+      break
+    case 'array':
+      if(_comp)
+        newType.type = 'List<'+_comp+'>'
+      else 
+        newType.type = 'List'
+      break;
+    case 'uuid':
+      newType.type = 'String'
+      break;
+    case 'object':
+      if(_comp)
+        newType.type = _comp
+      else if(newType.type == typeOrigin.xml)
+        newType.type =  _.capitalize(typeOrigin.xml.name)
+      else 
+        newType.type = 'Object'
+      break;
+  }
+
+  if (typeOrigin.isEnum) newType.type = 'String'
+
+  return newType
+}
+
+
+function javaParser(typeOrigin, enumValue) {
+  enumValue
+  let newType = {}
+  let _comp = ''
+
+  if(typeOrigin.items && typeOrigin.items.$ref)
+      _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+
+  newType.origin = typeOrigin.type? typeOrigin.type: _comp
+  newType.example = typeOrigin.example ? typeOrigin.example : ''
+  newType.description = typeOrigin.description ? typeOrigin.description : ''
+  newType.type = 'String'
+  newType.typeDesc = ''
+
+
+  switch (typeOrigin.type) {
+    case 'integer':
+      if (typeOrigin.format == 'int64')
+        newType.type = 'Double'
+      else if (typeOrigin.format == 'int32')
+        newType.type = 'Integer'
+      break;
+    case 'number':
+      if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
+        newType.type = 'Double'
+      // else if (type.format == 'double')
+      //  newType.type = 'double'
+      break;
+    case 'string':
+      switch (typeOrigin.format) {
+        case 'byte':
+          newType.type = 'ByteData'
+          break;
+        case 'binary':
+          newType.type = 'BinaryCodec'
+          break;
+        case 'date':
+          newType.type = 'LocalDate'
+          break;
+        case 'date-time':
+          newType.type = 'Instant'
+          break;
+        case 'password':
+        default:
+          newType.type = 'String'
+          break;
+      }
+      break;
+    case (typeOrigin == 'Instant'):
+      newType.type = 'Instant'
+      break
+    case 'array':
+      if(_comp)
+        newType.type = 'List<'+_comp+'>'
+      else 
+        newType.type = 'List'
+      break;
+    case 'uuid':
+      newType.type = 'String'
+      break;
+    case 'object':
+      if(_comp)
+        newType.type = _comp
+      else if(newType.type == typeOrigin.xml)
+        newType.type =  _.capitalize(typeOrigin.xml.name)
+      else 
+        newType.type = 'Object'
+      break;
+  }
+
+  if (typeOrigin.isEnum) newType.type = 'String'
+
+  return newType
+}
+
+
+function jsParser(typeOrigin, enumValue) {
+  enumValue
+  let newType = {}
+  let _comp = ''
+
+  if(typeOrigin.items && typeOrigin.items.$ref)
+      _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+
+  newType.origin = typeOrigin.type? typeOrigin.type: _comp
+  newType.example = typeOrigin.example ? typeOrigin.example : ''
+  newType.description = typeOrigin.description ? typeOrigin.description : ''
+  newType.type = 'String'
+  newType.typeDesc = ''
+
+
+  switch (typeOrigin.type) {
+    case 'integer':
+      if (typeOrigin.format == 'int64')
+        newType.type = 'double'
+      else if (typeOrigin.format == 'int32')
+        newType.type = 'int'
+      break;
+    case 'number':
+      if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
+        newType.type = 'double'
+      // else if (type.format == 'double')
+      //  newType.type = 'double'
+      break;
+    case 'string':
+      switch (typeOrigin.format) {
+        case 'byte':
+          newType.type = 'ByteData'
+          break;
+        case 'binary':
+          newType.type = 'BinaryCodec'
+          break;
+        case 'date':
+          newType.type = 'DateTime'
+          break;
+        case 'date-time':
+          newType.type = 'DateTime'
+          break;
+        case 'password':
+        default:
+          newType.type = 'String'
+          break;
+      }
+      break;
+    case (typeOrigin == 'Instant'):
+      newType.type = 'int'
+      newType.typeDesc = '.toIso8601String()' + 'Z'
+      break
+    case 'array':
+      if(_comp)
+        newType.type = 'List<'+_comp+'>'
+      else 
+        newType.type = 'List'
+      break;
+    case 'uuid':
+      newType.type = 'String'
+      break;
+    case 'object':
+      if(_comp)
+        newType.type = _comp
+      else if(newType.type == typeOrigin.xml)
+        newType.type =  _.capitalize(typeOrigin.xml.name)
+      else 
+        newType.type = 'Object'
+      break;
+  }
+
+  if (typeOrigin.isEnum) newType.type = 'String'
+
+  return newType
+}
+
+
+function phpParser(typeOrigin, enumValue) {
+  enumValue
+  let newType = {}
+  let _comp = ''
+
+  if(typeOrigin.items && typeOrigin.items.$ref)
+      _comp = _.capitalize(typeOrigin.items.$ref.split(RegExp(`^#/components/schemas/`))[1])
+
+  newType.origin = typeOrigin.type? typeOrigin.type: _comp
+  newType.example = typeOrigin.example ? typeOrigin.example : ''
+  newType.description = typeOrigin.description ? typeOrigin.description : ''
+  newType.type = 'String'
+  newType.typeDesc = ''
+
+
+  switch (typeOrigin.type) {
+    case 'integer':
+      if (typeOrigin.format == 'int64')
+        newType.type = 'double'
+      else if (typeOrigin.format == 'int32')
+        newType.type = 'int'
+      break;
+    case 'number':
+      if (typeOrigin.format == 'float' || typeOrigin.format == 'double')
+        newType.type = 'double'
+      // else if (type.format == 'double')
+      //  newType.type = 'double'
+      break;
+    case 'string':
+      switch (typeOrigin.format) {
+        case 'byte':
+          newType.type = 'ByteData'
+          break;
+        case 'binary':
+          newType.type = 'BinaryCodec'
+          break;
+        case 'date':
+          newType.type = 'DateTime'
+          break;
+        case 'date-time':
+          newType.type = 'DateTime'
+          break;
+        case 'password':
+        default:
+          newType.type = 'String'
+          break;
+      }
+      break;
+    case (typeOrigin == 'Instant'):
+      newType.type = 'int'
+      newType.typeDesc = '.toIso8601String()' + 'Z'
+      break
+    case 'array':
+      if(_comp)
+        newType.type = 'List<'+_comp+'>'
+      else 
+        newType.type = 'List'
+      break;
+    case 'uuid':
+      newType.type = 'String'
+      break;
+    case 'object':
+      if(_comp)
+        newType.type = _comp
+      else if(newType.type == typeOrigin.xml)
+        newType.type =  _.capitalize(typeOrigin.xml.name)
+      else 
+        newType.type = 'Object'
+      break;
+  }
+
+  if (typeOrigin.isEnum) newType.type = 'String'
+
+  return newType
+}
