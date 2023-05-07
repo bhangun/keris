@@ -40,6 +40,9 @@ function testAPI(arg) {
       break;
     case 'shopify':
       path = '../api_sample/shopify-oas3.json'
+      // https://shopify-connector-sit-oms.ascentis.com.sg/swagger/v1/swagger.json
+      // https://shopify-connector-sit-oms.ascentis.com.sg/swagger/index.html
+      // Swagger 2.0: https://gist.github.com/kinlane/0346107813e6402ba7aaf9e1829616b7 
       break;
     default:
       path = '../api_sample/pet-oas3.json'

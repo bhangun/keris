@@ -97,7 +97,7 @@ function mappingEntities(appsName, api, entitiesFromResponse) {
         pkType: 'String',
         relationships: [],
         entityName: entity.name,
-        entityClass: _.capitalize(entity.name),
+        entityClass: entity.name, //_.capitalize(entity.name),
         entityInstance: _.camelCase(entity.name),
         entityFolderName: _.camelCase(entity.name),
         entityFileName: _.camelCase(entity.name),
@@ -112,7 +112,7 @@ function mappingEntities(appsName, api, entitiesFromResponse) {
           pkType: 'String',
           relationships: [],
           entityName: entity[0],
-          entityClass: _.capitalize(entity[0]),
+          entityClass: entity[0], //_.capitalize(entity[0]),
           entityInstance: _.camelCase(entity[0]),
           entityFolderName: _.camelCase(entity[0]),
           entityFileName: _.camelCase(entity[0]),
@@ -120,6 +120,8 @@ function mappingEntities(appsName, api, entitiesFromResponse) {
           fields: mappingFields(entity[1])
         })
     })
+
+    console.log(entities)
     return entities
 }
 
@@ -237,6 +239,9 @@ function mappingServices(paths, api, lang, properties) {
       
         let externalDoc = ''
         let description = ''
+        let requestBody = paths[i].methods[m].requestBody.content
+        let requestType = ''
+        
         const response = rs.getResponseType(paths[i].methods[m].responses, properties)
 
         let responseType = response.responseType
@@ -245,8 +250,11 @@ function mappingServices(paths, api, lang, properties) {
         const param = transformParam(paths[i].methods[m], responseType, lang);
 
         const method = transformMethod(paths[i].methods[m].method, param);
-        
-        const parameters = param.param;
+
+        if (requestBody.length > 0)
+          requestType = requestBody[0].component +' '+requestBody[0].component.toLowerCase()
+
+        const parameters = param.param != ""? param.param : requestType;
         const query = param.query;
         const optId = paths[i].methods[m].operationId 
 
@@ -280,7 +288,7 @@ function mappingServices(paths, api, lang, properties) {
             tag: tag,
             externalDoc : externalDoc,
             operationId: optId ? optId : serviceName,
-            requestBody: paths[i].methods[m].requestBody.content,
+            requestBody: requestBody,
             responses: paths[i].methods[m].responses
         })
       }

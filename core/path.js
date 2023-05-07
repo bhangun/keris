@@ -19,7 +19,7 @@
 
 const _ = require('lodash');
 const rs = require('./responses');
-const prop = require('./properties');
+//const prop = require('./properties');
 
 module.exports = {
     transformPaths
@@ -60,10 +60,12 @@ function transformPaths(api, props, entitiesFromResponse, entitiesFromRequest) {
     if (path) Object.entries(path).forEach(method => {
       const m = method[1];
       const reqContentType = []
-      let typeRequest = ''
+     /*  let typeRequest = ''
       let required = []
-      let _properties = []
+      let _properties = [] 
       
+      */
+      entitiesFromRequest
   
       if (m.requestBody){
         Object.entries(m.requestBody.content).forEach(c => {
@@ -120,8 +122,6 @@ function transformPaths(api, props, entitiesFromResponse, entitiesFromRequest) {
       index++
     })
 
-  console.log(methods)
-  
   return methods
 }
 
@@ -167,7 +167,7 @@ function splitRoles(roles){
  * @param {*} properties 
  * @returns 
  */
-function getRequestBody(requestBody, typeRequest, reqContentType, required, properties, props) {
+/* function getRequestBody(requestBody, typeRequest, reqContentType, required, properties, props) {
   const getprop = prop.transformProperties(properties, required)
 
   props.push(getprop)
@@ -179,7 +179,7 @@ function getRequestBody(requestBody, typeRequest, reqContentType, required, prop
     contentType: reqContentType,
     properties: getprop
   }
-}
+} */
   
 /**
  * Split Parameter
