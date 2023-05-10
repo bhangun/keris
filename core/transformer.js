@@ -121,7 +121,6 @@ function mappingEntities(appsName, api, entitiesFromResponse) {
         })
     })
 
-    console.log(entities)
     return entities
 }
 
@@ -232,6 +231,7 @@ function transformApi(appsName, path, callback) {
 function mappingServices(paths, api, lang, properties) {
 
     const services = []
+
     for (const i in paths) {
       for (const m in paths[i].methods) {
         const tag = paths[i].methods[m].tags[0]
@@ -241,6 +241,7 @@ function mappingServices(paths, api, lang, properties) {
         let description = ''
         let requestBody = paths[i].methods[m].requestBody.content
         let requestType = ''
+        let hasRequestType = false
         
         const response = rs.getResponseType(paths[i].methods[m].responses, properties)
 
@@ -251,8 +252,10 @@ function mappingServices(paths, api, lang, properties) {
 
         const method = transformMethod(paths[i].methods[m].method, param);
 
-        if (requestBody.length > 0)
+        if (requestBody.length > 0){
           requestType = requestBody[0].component +' '+requestBody[0].component.toLowerCase()
+          hasRequestType = true
+        }
 
         const parameters = param.param != ""? param.param : requestType;
         const query = param.query;
@@ -267,28 +270,30 @@ function mappingServices(paths, api, lang, properties) {
 
         services.push({
             index: i, 
+            name: paths[i].methods[m].name,    
+            operationId: optId ? optId : serviceName, 
+            parameters: paths[i].methods[m].parameters,
             path: paths[i].path ? paths[i].path : '',
             serviceName: optId ? optId : serviceName,
             method: method.method,
             summary: paths[i].methods[m].summary ? paths[i].methods[m].summary : '',
             desc: paths[i].methods[m].description ? paths[i].methods[m].description : description,
-            responseType: responseType,
-            hasResponse: response.hasResponse,
-            isResponseCompArray: response.isResponseCompArray,
+            
             parametersString: parameters,
             parameterItems: param.paramItems,
             query: query,
+            hasRequestType: hasRequestType,
+            requestBody: requestBody,
             requestPayload: method.payload,
             requestPayloadStatement: method.payloadStatement,
             onlyParam: method.onlyParam,
             jsonParam: method.jsonParam,
-
-            name: paths[i].methods[m].name,     
-            parameters: paths[i].methods[m].parameters,
             tag: tag,
             externalDoc : externalDoc,
-            operationId: optId ? optId : serviceName,
-            requestBody: requestBody,
+            
+            responseType: responseType,
+            hasResponse: response.hasResponse,
+            isResponseCompArray: response.isResponseCompArray,
             responses: paths[i].methods[m].responses
         })
       }
